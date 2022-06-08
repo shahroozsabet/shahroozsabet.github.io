@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
             padding: 25
         }
     }, revolutionBackground: {
-        backgroundImage: url("/assets/repeatingBackground.svg"),
+        backgroundImage: `url("/assets/repeatingBackground.svg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
             paddingTop: "8em", paddingBottom: "8em", paddingLeft: 0, paddingRight: 0, borderRadius: 0, width: "100%"
         }
     }, infoBackground: {
-        backgroundImage: url("/assets/infoBackground.svg"),
+        backgroundImage: `url("/assets/infoBackground.svg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

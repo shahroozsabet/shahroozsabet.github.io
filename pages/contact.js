@@ -19,14 +19,14 @@ import ButtonArrow from "../src/ui/ButtonArrows";
 
 const useStyles = makeStyles(theme => ({
     background: {
-        backgroundImage: url("/assets/longJon.jpg"),
+        backgroundImage: `url("/assets/longJon.jpg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         height: "60em",
         paddingBottom: "10em",
         [theme.breakpoints.down("md")]: {
-            backgroundImage: url("/assets/longJonMobile.jpg")
+            backgroundImage: `url("/assets/longJonMobile.jpg")`
         }
     },
     estimateButton: {
