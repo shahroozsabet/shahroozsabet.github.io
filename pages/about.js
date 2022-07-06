@@ -26,6 +26,11 @@ export default function About(props) {
     return (<Grid container direction={"column"}>
         <Head>
             <title key="title">About Us - History and Team| Shahrooz Development</title>
+            <meta
+                name="description"
+                key="description"
+                content="We provide the fastest, most modern, affordable, and aesthetic software design and development services in the Småland. Get a free online estimate now."
+            />
         </Head>
         <Grid
             item
