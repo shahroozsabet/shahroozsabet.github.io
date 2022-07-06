@@ -766,6 +766,16 @@ export default function Estimate() {
                     key="description"
                     content="Use our free online estimate calculator to instantly check the cost of your custom software, mobile app, or website design and development project."
                 />
+                <meta
+                    property="og:title"
+                    content="Bringing Småland Technology to the World | Free Estimate"
+                    key="og:title"
+                />
+                <meta
+                    property="og:url"
+                    key="og:url"
+                    content="shahrooz.se/estimate"
+                />
             </Head>
             <Grid
                 item

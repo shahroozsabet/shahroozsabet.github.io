@@ -165,6 +165,16 @@ export default function Contact(props) {
                 key="description"
                 content="Let us guide you through the custom software design and development process. Send us a message with any of your ideas or questions to get started."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | Contact Us"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se/contact"
+            />
         </Head>
         <Grid
             item

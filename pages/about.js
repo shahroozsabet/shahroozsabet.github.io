@@ -31,6 +31,16 @@ export default function About(props) {
                 key="description"
                 content="We provide the fastest, most modern, affordable, and aesthetic software design and development services in the Småland. Get a free online estimate now."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | About Us"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se/about"
+            />
         </Head>
         <Grid
             item

@@ -35,6 +35,16 @@ export default function Revolution(props) {
                 key="description"
                 content="Visionary insights, coupled with cutting-edge technology, is a recipe for revolution. Get a free online estimate instantly."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | The Revolution"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se/revolution"
+            />
         </Head>
         <Grid
             item

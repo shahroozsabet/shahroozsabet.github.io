@@ -41,6 +41,16 @@ export default function Mobileapps(props) {
                 key="description"
                 content="Mobile Apps Made Easy | Our cutting-edge mobile app development process lets us build beautifully designed, carefully crafted apps for both iOS and Android."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | Mobile App Development"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se/mobileapps"
+            />
         </Head>
         <Grid
             item

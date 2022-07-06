@@ -98,6 +98,16 @@ export default function Index(props) {
                 key="description"
                 content="Pristine software custom-designed from the ground up with cutting-edge optimizations. Use our free estimate calculator to check your project cost."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | Shahrooz Development"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se"
+            />
         </Head>
         <Grid item> {/*-----Hero Block-----*/}
             <Grid container justifyContent={"flex-end"} alignItems={"center"} direction={"row"}>

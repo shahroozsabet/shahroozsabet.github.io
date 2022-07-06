@@ -37,6 +37,16 @@ export default function Services(props) {
                 key="description"
                 content="Cutting-edge software, mobile app, and website development services with sleek custom designs - get a free online estimate instantly."
             />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | Services"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="shahrooz.se/services"
+            />
         </Head>
         <Grid
             item
