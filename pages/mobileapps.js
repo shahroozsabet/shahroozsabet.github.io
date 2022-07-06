@@ -6,6 +6,7 @@ import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useThem
 import integrationAnimation from '../src/animations/integrationAnimation/data.json'
 
 import CallToAction from "../src/ui/CallToAction";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -33,6 +34,9 @@ export default function Mobileapps(props) {
     };
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">iOS/Android App Design and Development | Shahrooz Development</title>
+        </Head>
         <Grid
             item
             container

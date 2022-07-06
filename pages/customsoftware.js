@@ -9,6 +9,7 @@ import automationAnimation from "../src/animations/automationAnimation/data.json
 import uxAnimation from "../src/animations/uxAnimation/data";
 
 import CallToAction from "../src/ui/CallToAction";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -53,6 +54,9 @@ export default function Customsoftware(props) {
     };
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">Custom Software Development and Design - Free Estimate</title>
+        </Head>
         <Grid
             item
             container

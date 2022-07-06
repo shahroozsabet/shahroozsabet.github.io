@@ -5,6 +5,7 @@ import {Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-u
 import technologyAnimation from "../src/animations/technologyAnimation/data.json";
 
 import CallToAction from "../src/ui/CallToAction";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     rowContainer: {
@@ -27,6 +28,9 @@ export default function Revolution(props) {
     };
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">The Revolution - Cutting-Edge Software | Shahrooz Development</title>
+        </Head>
         <Grid
             item
             className={classes.rowContainer}

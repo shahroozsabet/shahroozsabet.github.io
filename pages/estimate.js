@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 
 import estimateAnimation from "../src/animations/estimateAnimation/data.json";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -758,6 +759,9 @@ export default function Estimate() {
 
     return (
         <Grid container direction={"row"}>
+            <Head>
+                <title key="title">Free Custom Software Estimate | Shahrooz Development</title>
+            </Head>
             <Grid
                 item
                 container

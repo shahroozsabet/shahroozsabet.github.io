@@ -7,6 +7,7 @@ import ButtonArrow from "../src/ui/ButtonArrow";
 import CallToAction from "../src/ui/CallToAction";
 
 import animationData from '../src/animations/landinganimation/data'
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     animation: {
@@ -90,6 +91,9 @@ export default function Index(props) {
         }
     };
     return (<Grid container direction={"column"} className={classes.mainContainer}>
+        <Head>
+            <title key="title">Custom Software, Mobile Apps, and Websites | Shahrooz Development</title>
+        </Head>
         <Grid item> {/*-----Hero Block-----*/}
             <Grid container justifyContent={"flex-end"} alignItems={"center"} direction={"row"}>
                 <Grid sm item className={classes.heroTextContainer}>

@@ -2,6 +2,7 @@ import React from "react";
 import {Avatar, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
 import CallToAction from "../src/ui/CallToAction";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     missionStatement: {
@@ -23,6 +24,9 @@ export default function About(props) {
     const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">About Us - History and Team| Shahrooz Development</title>
+        </Head>
         <Grid
             item
             className={classes.rowContainer}

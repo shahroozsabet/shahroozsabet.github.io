@@ -3,6 +3,7 @@ import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useThem
 import Link from "../src/Link";
 
 import CallToAction from "../src/ui/CallToAction";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -26,6 +27,9 @@ export default function Websites(props) {
     const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">Stunning Custom Website Design | Shahrooz Development</title>
+        </Head>
         <Grid
             item
             container

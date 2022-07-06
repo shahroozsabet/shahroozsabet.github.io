@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import Link from "../src/Link";
 import ButtonArrow from "../src/ui/ButtonArrow";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     specialText: {
@@ -29,6 +30,9 @@ export default function Services(props) {
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
     return (<Grid container direction={"column"}>
+        <Head>
+            <title key="title">Top Custom Software Development Services | Shahrooz Development</title>
+        </Head>
         <Grid
             item
             style={{

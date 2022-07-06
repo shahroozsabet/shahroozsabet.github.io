@@ -16,6 +16,7 @@ import {
 import Link from "../src/Link";
 
 import ButtonArrow from "../src/ui/ButtonArrow";
+import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -157,6 +158,9 @@ export default function Contact(props) {
     );
 
     return (<Grid container direction={"row"}>
+        <Head>
+            <title key="title">Contact Us | Shahrooz Development</title>
+        </Head>
         <Grid
             item
             container
