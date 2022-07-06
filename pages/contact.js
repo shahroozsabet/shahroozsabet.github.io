@@ -196,7 +196,7 @@ export default function Contact(props) {
                     <Grid item>
                         <Typography
                             align={matchesMD ? "center" : undefined}
-                            variant={"h2"}
+                            variant={"h1"}
                             style={{lineHeight: 1}}
                         >
                             Contact Us
@@ -466,7 +466,7 @@ export default function Contact(props) {
                     <Grid item>
                         <Typography
                             align={matchesMD ? "center" : undefined}
-                            variant={"h2"}
+                            variant={"h1"}
                         >
                             Simple Software.<br/>Revolutionary Results.
                         </Typography>

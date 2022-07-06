@@ -85,7 +85,7 @@ export default function Websites(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"h2"}
+                        variant={"h1"}
                     >
                         Website Development
                     </Typography>

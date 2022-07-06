@@ -112,7 +112,7 @@ export default function Customsoftware(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"h2"}
+                        variant={"h1"}
                     >
                         Custom Software Development
                     </Typography>

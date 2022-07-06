@@ -117,7 +117,7 @@ export default function Index(props) {
         <Grid item> {/*-----Hero Block-----*/}
             <Grid container justifyContent={"flex-end"} alignItems={"center"} direction={"row"}>
                 <Grid sm item className={classes.heroTextContainer}>
-                    <Typography variant={"h2"} align={"center"}>
+                    <Typography variant={"h1"} align={"center"}>
                         Bringing Småland Technology
                         <br/>
                         to the World
@@ -387,7 +387,7 @@ export default function Index(props) {
                             style={{marginBottom: matchesXS ? "10em" : 0}}
                             direction={"column"}
                         >
-                            <Typography variant={"h2"} style={{color: "white"}}>
+                            <Typography variant={"h1"} style={{color: "white"}}>
                                 About Us
                             </Typography>
                             <Typography variant={"subtitle2"}>
@@ -423,7 +423,7 @@ export default function Index(props) {
                         }}
                     >
                         <Grid container direction={"column"}>
-                            <Typography variant={"h2"} style={{color: "white"}}>
+                            <Typography variant={"h1"} style={{color: "white"}}>
                                 Contact Us
                             </Typography>
                             <Typography variant={"subtitle2"}>

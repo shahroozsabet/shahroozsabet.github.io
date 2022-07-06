@@ -18,7 +18,7 @@ export default createTheme({
             fontFamily: "Raleway", textTransform: "none", fontWeight: 700, color: "white", fontSize: "1rem",
         }, estimate: {
             fontFamily: "Pacifico", fontSize: "1rem", textTransform: "none", color: "white"
-        }, h2: {
+        }, h1: {
             fontFamily: "Raleway", fontWeight: 700, fontSize: "2.5rem", color: arcBlue, lineHeight: 1.5
         }, h3: {
             fontFamily: "Pacifico", fontSize: "2.5rem", color: arcBlue

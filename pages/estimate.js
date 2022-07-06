@@ -797,7 +797,7 @@ export default function Estimate() {
                     }}
                 >
                     <Typography
-                        variant={"h2"}
+                        variant={"h1"}
                         align={matchesMD ? "center" : undefined}
                     >
                         Estimate
@@ -837,7 +837,7 @@ export default function Estimate() {
                             <Grid item>
                                 <Typography
                                     align={"center"}
-                                    variant={"h2"}
+                                    variant={"h1"}
                                     style={{
                                         fontWeight: 500,
                                         fontSize: "2.25rem",
@@ -969,7 +969,7 @@ export default function Estimate() {
                             marginTop: "1em"
                         }}
                     >
-                        <Typography variant={"h2"} align={"center"}>
+                        <Typography variant={"h1"} align={"center"}>
                             Estimate
                         </Typography>
                     </Grid>

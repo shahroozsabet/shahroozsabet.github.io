@@ -92,7 +92,7 @@ export default function Mobileapps(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"h2"}
+                        variant={"h1"}
                     >
                         Mobile App Development
                     </Typography>
