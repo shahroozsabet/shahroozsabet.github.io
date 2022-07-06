@@ -13,9 +13,9 @@ import {
     useMediaQuery,
     useTheme
 } from "@material-ui/core";
-import Link from "../Link";
+import Link from "../src/Link";
 
-import ButtonArrow from "../src/ui/ButtonArrows";
+import ButtonArrow from "../src/ui/ButtonArrow";
 
 const useStyles = makeStyles(theme => ({
     background: {

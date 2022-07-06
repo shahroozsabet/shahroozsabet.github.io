@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {
     AppBar,
     Button,
+    Hidden,
     IconButton,
     List,
     ListItem,
@@ -351,7 +352,12 @@ export default function Header(props) {
                         >
                             <img alt="Company Logo" className={classes.logo} src={"/assets/logo.svg"}/>
                         </Button>
-                        {matches ? drawer : tabs}
+                        <Hidden mdDown>
+                            {tabs}
+                        </Hidden>
+                        <Hidden lgUp>
+                            {drawer}
+                        </Hidden>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
