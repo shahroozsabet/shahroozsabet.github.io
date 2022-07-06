@@ -776,6 +776,11 @@ export default function Estimate() {
                     key="og:url"
                     content="shahrooz.se/estimate"
                 />
+                <link
+                    rel="canonical"
+                    key="canonical"
+                    href="shahrooz.se/estimate"
+                />
             </Head>
             <Grid
                 item

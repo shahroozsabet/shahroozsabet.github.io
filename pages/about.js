@@ -41,6 +41,11 @@ export default function About(props) {
                 key="og:url"
                 content="shahrooz.se/about"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se/about"
+            />
         </Head>
         <Grid
             item

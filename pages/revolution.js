@@ -45,6 +45,11 @@ export default function Revolution(props) {
                 key="og:url"
                 content="shahrooz.se/revolution"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se/revolution"
+            />
         </Head>
         <Grid
             item

@@ -51,6 +51,11 @@ export default function Mobileapps(props) {
                 key="og:url"
                 content="shahrooz.se/mobileapps"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se/mobileapps"
+            />
         </Head>
         <Grid
             item

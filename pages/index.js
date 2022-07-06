@@ -108,6 +108,11 @@ export default function Index(props) {
                 key="og:url"
                 content="shahrooz.se"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se"
+            />
         </Head>
         <Grid item> {/*-----Hero Block-----*/}
             <Grid container justifyContent={"flex-end"} alignItems={"center"} direction={"row"}>

@@ -71,6 +71,11 @@ export default function Customsoftware(props) {
                 key="og:url"
                 content="shahrooz.se/customsoftware"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se/customsoftware"
+            />
         </Head>
         <Grid
             item

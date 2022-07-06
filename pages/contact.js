@@ -175,6 +175,11 @@ export default function Contact(props) {
                 key="og:url"
                 content="shahrooz.se/contact"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="https://shahrooz.se/contact"
+            />
         </Head>
         <Grid
             item

@@ -44,6 +44,11 @@ export default function Websites(props) {
                 key="og:url"
                 content="shahrooz.se/websites"
             />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="shahrooz.se/websites"
+            />
         </Head>
         <Grid
             item
