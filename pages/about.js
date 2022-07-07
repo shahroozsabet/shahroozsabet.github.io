@@ -33,7 +33,7 @@ export default function About(props) {
             />
             <meta
                 property="og:title"
-                content="Bringing Småland Technology to the World | About Us"
+                content="About Us | History"
                 key="og:title"
             />
             <meta
@@ -72,7 +72,7 @@ export default function About(props) {
                 to their interests, technology is meant to bring us closer to what we
                 care about in the best way possible. Shahrooz Development will use that
                 principle to provide fast, modern, inexpensive, and aesthetic software
-                to the Midwest and beyond.
+                to Sweden and beyond.
             </Typography>
         </Grid>
         <Grid

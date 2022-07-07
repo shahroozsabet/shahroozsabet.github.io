@@ -193,7 +193,7 @@ export default function Customsoftware(props) {
                     </Typography>
                 </Grid>
                 <Grid item>
-                    <img src={"/assets/bulb.svg"} alt={"/assets/bulb.svg"}/>
+                    <img src={"/assets/bulb.svg"} alt={"lightbulb"}/>
                 </Grid>
             </Grid>
             <Grid
@@ -236,8 +236,9 @@ export default function Customsoftware(props) {
             container
             alignItems={matchesMD ? "center" : undefined}
             direction={matchesMD ? "column" : "row"}
-            justifyContent={"space-around"}
+            justifyContent={matchesMD ? "center" : "space-between"}
             className={classes.rowContainer}
+            style={{display: matchesMD ? "grid" : undefined}}
         >
             <Grid
                 item
@@ -371,9 +372,9 @@ export default function Customsoftware(props) {
             container
             alignItems={matchesMD ? "center" : undefined}
             direction={matchesMD ? "column" : "row"}
-            justifyContent={"space-around"}
-            style={{marginBottom: "20em"}}
+            justifyContent={matchesMD ? "center" : "space-between"}
             className={classes.rowContainer}
+            style={{display: matchesMD ? "grid" : undefined}}
         >
             <Grid
                 item
@@ -478,7 +479,7 @@ export default function Customsoftware(props) {
                 </Grid>
             </Grid>
         </Grid>
-        <Grid item>
+        <Grid item style={{marginTop: "20em"}}>
             <CallToAction setValue={props.setValue}/>
         </Grid>
     </Grid>)
