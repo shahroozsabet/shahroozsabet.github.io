@@ -45,12 +45,12 @@ export default function Services(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/services"
+                content="https://shahrooz.herokuapp.com/services"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/services"
+                href="https://shahrooz.herokuapp.com/services"
             />
         </Head>
         <Grid

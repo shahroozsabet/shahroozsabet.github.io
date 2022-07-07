@@ -39,12 +39,12 @@ export default function About(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/about"
+                content="https://shahrooz.herokuapp.com/about"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/about"
+                href="https://shahrooz.herokuapp.com/about"
             />
         </Head>
         <Grid

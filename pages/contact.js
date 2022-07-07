@@ -173,12 +173,12 @@ export default function Contact(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/contact"
+                content="https://shahrooz.herokuapp.com/contact"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="https://shahrooz.se/contact"
+                href="https://https://shahrooz.herokuapp.com/contact"
             />
         </Head>
         <Grid

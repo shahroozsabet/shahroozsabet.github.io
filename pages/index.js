@@ -106,12 +106,12 @@ export default function Index(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se"
+                content="https://shahrooz.herokuapp.com"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se"
+                href="https://shahrooz.herokuapp.com"
             />
         </Head>
         <Grid item> {/*-----Hero Block-----*/}

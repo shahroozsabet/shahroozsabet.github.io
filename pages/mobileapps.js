@@ -49,12 +49,12 @@ export default function Mobileapps(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/mobileapps"
+                content="https://shahrooz.herokuapp.com/mobileapps"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/mobileapps"
+                href="https://shahrooz.herokuapp.com/mobileapps"
             />
         </Head>
         <Grid
