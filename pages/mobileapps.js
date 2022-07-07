@@ -49,12 +49,12 @@ export default function Mobileapps(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/mobileapps"
+                content="https://shahrooz.vercel.app/mobileapps"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/mobileapps"
+                href="https://shahrooz.vercel.app/mobileapps"
             />
         </Head>
         <Grid

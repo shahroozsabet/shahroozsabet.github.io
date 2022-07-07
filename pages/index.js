@@ -106,12 +106,12 @@ export default function Index(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se"
+                content="https://shahrooz.vercel.app"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se"
+                href="https://shahrooz.vercel.app"
             />
         </Head>
         <Grid item> {/*-----Hero Block-----*/}

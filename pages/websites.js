@@ -42,12 +42,12 @@ export default function Websites(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/websites"
+                content="https://shahrooz.vercel.app/websites"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/websites"
+                href="https://shahrooz.vercel.app/websites"
             />
         </Head>
         <Grid

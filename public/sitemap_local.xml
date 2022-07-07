@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://shahrooz.se/about</loc>
+        <loc>https://shahrooz.vercel.app/about</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/contact</loc>
+        <loc>https://shahrooz.vercel.app/contact</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/customsoftware</loc>
+        <loc>https://shahrooz.vercel.app/customsoftware</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/estimate</loc>
+        <loc>https://shahrooz.vercel.app/estimate</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se</loc>
+        <loc>https://shahrooz.vercel.app</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/mobileapps</loc>
+        <loc>https://shahrooz.vercel.app/mobileapps</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/revolution</loc>
+        <loc>https://shahrooz.vercel.app/revolution</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/services</loc>
+        <loc>https://shahrooz.vercel.app/services</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
     ,
     <url>
-        <loc>https://shahrooz.se/websites</loc>
+        <loc>https://shahrooz.vercel.app/websites</loc>
         <lastmod>2022-07-06</lastmod>
     </url>
 </urlset>

@@ -45,12 +45,12 @@ export default function Services(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/services"
+                content="https://shahrooz.vercel.app/services"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/services"
+                href="https://shahrooz.vercel.app/services"
             />
         </Head>
         <Grid

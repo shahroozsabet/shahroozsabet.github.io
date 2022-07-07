@@ -43,12 +43,12 @@ export default function Revolution(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/revolution"
+                content="https://shahrooz.vercel.app/revolution"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/revolution"
+                href="https://shahrooz.vercel.app/revolution"
             />
         </Head>
         <Grid
