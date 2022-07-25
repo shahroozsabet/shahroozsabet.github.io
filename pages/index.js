@@ -133,7 +133,9 @@ export default function Index(props) {
                                 href={"/estimate"}
                                 className={classes.estimateButton}
                                 variant={"contained"}
-                                onClick={() => props.setValue(5)}
+                                onClick={() => {
+                                    props.setValue(false);
+                                }}
                             >
                                 Free Estimate
                             </Button>
