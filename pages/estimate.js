@@ -1,7 +1,8 @@
 import React, {useState} from "react";
+import Head from "next/head";
 import axios from "axios";
-import Lottie from "react-lottie";
 import {cloneDeep} from "lodash";
+import Lottie from "react-lottie";
 import {
     Button,
     CircularProgress,
@@ -19,7 +20,6 @@ import {
 } from "@material-ui/core";
 
 import estimateAnimation from "../src/animations/estimateAnimation/data.json";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.orange,
         height: 50,
         width: 225,
-        marginTop: "5em",
         fontSize: "1.25rem",
+        marginTop: "5em",
         "&:hover": {
             backgroundColor: theme.palette.secondary.light
         }
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     specialText: {
         fontFamily: "Raleway",
         fontWeight: 700,
-        fontSize: "2rem",
+        fontSize: "1.5rem",
         color: theme.palette.common.orange
     }
 }));
@@ -72,7 +72,7 @@ const defaultQuestions = [
                 title: "Mobile App Development",
                 subtitle: null,
                 icon: "/assets/mobile.svg",
-                iconAlt: "outlines of phones and tablets",
+                iconAlt: "phones and tablet outline",
                 selected: false,
                 cost: 0
             },
@@ -316,8 +316,8 @@ const websiteQuestions = [
 export default function Estimate() {
     const classes = useStyles();
     const theme = useTheme();
-    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
     const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
     const [questions, setQuestions] = useState(defaultQuestions);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -335,12 +335,16 @@ export default function Estimate() {
     const [platforms, setPlatforms] = useState([]);
     const [features, setFeatures] = useState([]);
     const [customFeatures, setCustomFeatures] = useState("");
-    const [users, setUsers] = useState("");
     const [category, setCategory] = useState("");
-
-    const [alert, setAlerts] = useState({open: false, message: "", backgroundColor: ""});
+    const [users, setUsers] = useState("");
 
     const [loading, setLoading] = useState(false);
+
+    const [alert, setAlert] = useState({
+        open: false,
+        message: "",
+        backgroundColor: ""
+    });
 
     const defaultOptions = {
         loop: true,
@@ -353,7 +357,6 @@ export default function Estimate() {
 
     const nextQuestion = () => {
         const newQuestions = cloneDeep(questions);
-
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
         const nextIndex = activeIndex + 1;
@@ -366,7 +369,6 @@ export default function Estimate() {
 
     const previousQuestion = () => {
         const newQuestions = cloneDeep(questions);
-
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
         const nextIndex = activeIndex - 1;
@@ -377,55 +379,32 @@ export default function Estimate() {
         setQuestions(newQuestions);
     };
 
-    const backButtonDisabled = () => {
+    const navigationPreviousDisabled = () => {
         const currentlyActive = questions.filter(question => question.active);
-        const activeId = currentlyActive[0].id;
 
-        if (activeId === 1) {
+        if (currentlyActive[0].id === 1) {
             return true;
         } else {
             return false;
         }
     };
 
-    const forwardButtonDisabled = () => {
+    const navigationNextDisabled = () => {
         const currentlyActive = questions.filter(question => question.active);
-        const activeId = currentlyActive[0].id;
 
-        if (activeId === questions[questions.length - 1].id) {
+        if (currentlyActive[0].id === questions[questions.length - 1].id) {
             return true;
         } else {
             return false;
         }
-    };
-
-    const estimateDisabled = () => {
-        const emptySelections = questions.map(question =>
-            question.options.filter(option => option.selected))
-            .filter(question => question.length === 0);
-
-        if (questions.length === 2) {
-            if (emptySelections.length === 1) {
-                return false;
-            }
-        } else if (questions.length === 1) {
-            return true;
-        } else if (emptySelections.length < 3 &&
-            questions[questions.length - 1].options
-                .filter(option => option.selected).length > 0) {
-            return false;
-        }
-        return true;
     };
 
     const handleSelect = (id) => {
         const newQuestions = cloneDeep(questions);
-
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
 
         const newSelected = newQuestions[activeIndex].options[id - 1];
-
         const previousSelected = currentlyActive[0].options.filter(
             option => option.selected
         );
@@ -449,8 +428,8 @@ export default function Estimate() {
                 setPlatforms([]);
                 setFeatures([]);
                 setCustomFeatures("");
-                setUsers("");
                 setCategory("");
+                setUsers("");
                 break;
             case "Mobile App Development":
                 setQuestions(softwareQuestions);
@@ -458,8 +437,8 @@ export default function Estimate() {
                 setPlatforms([]);
                 setFeatures([]);
                 setCustomFeatures("");
-                setUsers("");
                 setCategory("");
+                setUsers("");
                 break;
             case "Website Development":
                 setQuestions(websiteQuestions);
@@ -467,8 +446,8 @@ export default function Estimate() {
                 setPlatforms([]);
                 setFeatures([]);
                 setCustomFeatures("");
-                setUsers("");
                 setCategory("");
+                setUsers("");
                 break;
             default:
                 setQuestions(newQuestions);
@@ -606,7 +585,7 @@ export default function Estimate() {
                 }
             )
             .then(res => {
-                setAlerts({
+                setAlert({
                     open: true,
                     message: "Estimate placed successfully!",
                     backgroundColor: "#4BB543"
@@ -614,7 +593,7 @@ export default function Estimate() {
                 setDialogOpen(false);
             })
             .catch(err => {
-                setAlerts({
+                setAlert({
                     open: true,
                     message: "Something went wrong, please try again!",
                     backgroundColor: "#FF3232"
@@ -625,7 +604,35 @@ export default function Estimate() {
 
     };
 
-    const softwareSelections = (
+    const estimateDisabled = () => {
+
+        const emptySelections = questions
+            .filter(
+                question => question.title !== "Which features do you expect to use?"
+            )
+            .map(question => question.options.filter(option => option.selected))
+            .filter(question => question.length === 0);
+
+        const featureSelected = questions
+            .filter(
+                question => question.title === "Which features do you expect to use?"
+            )
+            .map(question => question.options.filter(option => option.selected))
+            .filter(selections => selections.length > 0);
+
+        if (questions.length === 2) {
+            if (emptySelections.length === 1) {
+                return false;
+            }
+        } else if (questions.length === 1) {
+            return true;
+        } else if (emptySelections.length === 1 && featureSelected.length > 0) {
+            return false;
+        }
+        return true;
+    };
+
+    const softwareSelection = (
         <Grid container direction={"column"}>
             <Grid
                 item
@@ -731,7 +738,7 @@ export default function Estimate() {
         </Grid>
     );
 
-    const websiteSelections = (
+    const websiteSelection = (
         <Grid
             container
             direction={"column"}
@@ -913,23 +920,23 @@ export default function Estimate() {
                 >
                     <Grid item>
                         <IconButton
-                            disabled={backButtonDisabled()}
+                            disabled={navigationPreviousDisabled()}
                             onClick={previousQuestion}
                         >
                             <img
-                                src={backButtonDisabled() ? "/assets/backArrowDisabled.svg" : "/assets/backArrow.svg"}
+                                src={navigationPreviousDisabled() ? "/assets/backArrowDisabled.svg" : "/assets/backArrow.svg"}
                                 alt={"Previous question"}
                             />
                         </IconButton>
                     </Grid>
                     <Grid item>
                         <IconButton
-                            disabled={forwardButtonDisabled()}
+                            disabled={navigationNextDisabled()}
                             onClick={nextQuestion}
                         >
                             <img
                                 src={
-                                    forwardButtonDisabled() ? "/assets/forwardArrowDisabled.svg" : "/assets/forwardArrow.svg"
+                                    navigationNextDisabled() ? "/assets/forwardArrowDisabled.svg" : "/assets/forwardArrow.svg"
                                 }
                                 alt={"Next question"}
                             />
@@ -1075,7 +1082,7 @@ export default function Estimate() {
                         >
                             <Hidden smDown>
                                 <Grid item>
-                                    {questions.length > 2 ? softwareSelections : websiteSelections}
+                                    {questions.length > 2 ? softwareSelection : websiteSelection}
                                 </Grid>
                             </Hidden>
                             <Grid item>
@@ -1114,14 +1121,14 @@ export default function Estimate() {
             </Dialog>
             <Snackbar
                 open={alert.open}
+                message={alert.message}
                 ContentProps={{
                     style: {
                         backgroundColor: alert.backgroundColor
                     }
                 }}
                 anchorOrigin={{vertical: "top", horizontal: "center"}}
-                message={alert.message}
-                onClose={() => setAlerts({...alert, open: false})}
+                onClose={() => setAlert({...alert, open: false})}
                 autoHideDuration={4000}
             />
         </Grid>
