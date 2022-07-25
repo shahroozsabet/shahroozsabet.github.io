@@ -310,7 +310,7 @@ export default function Header(props) {
                     <ListItem
                         onClick={() => {
                             setOpenDrawer(false);
-                            props.setValue(5);
+                            props.setValue(false);
                         }}
                         divider
                         button
