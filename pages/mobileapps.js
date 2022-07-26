@@ -1,34 +1,42 @@
 import React from "react";
-import Lottie from 'react-lottie'
+import Head from "next/head";
+import Lottie from "react-lottie";
 import Link from "../src/Link";
 import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
-import integrationAnimation from '../src/animations/integrationAnimation/data.json'
+import integrationAnimation from "../src/animations/integrationAnimation/data.json";
 
 import CallToAction from "../src/ui/CallToAction";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
         maxWidth: "40em"
-    }, arrowContainer: {
+    },
+    arrowContainer: {
         marginTop: "0.5em"
-    }, rowContainer: {
-        paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
-            paddingLeft: "1.5em", paddingRight: "1.5em"
+    },
+    rowContainer: {
+        paddingLeft: "5em",
+        paddingRight: "5em",
+        [theme.breakpoints.down("sm")]: {
+            paddingLeft: "1.5em",
+            paddingRight: "1.5em"
         }
     }
-}))
+}));
 
 export default function Mobileapps(props) {
-    const classes = useStyles()
-    const theme = useTheme()
-    const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
-    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
-    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
+    const classes = useStyles();
+    const theme = useTheme();
+    const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
     const defaultOptions = {
-        loop: true, autoplay: false, animationData: integrationAnimation, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: integrationAnimation,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
@@ -79,7 +87,10 @@ export default function Mobileapps(props) {
                         href={"/customsoftware"}
                         onClick={() => props.setSelectedIndex(1)}
                     >
-                        <img src={"/assets/backArrow.svg"} alt={"Back to Custom Software Development Page"}/>
+                        <img
+                            src={"/assets/backArrow.svg"}
+                            alt={"Back to Custom Software Development Page"}
+                        />
                     </IconButton>
                 </Grid>
             </Hidden>
@@ -92,6 +103,10 @@ export default function Mobileapps(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
+                        style={{
+                            lineHeight: matchesXS ? 1.1 : null,
+                            marginBottom: matchesXS ? "0.5em" : null
+                        }}
                         variant={"h1"}
                     >
                         Mobile App Development
@@ -239,7 +254,8 @@ export default function Mobileapps(props) {
                 alignItems={"center"}
                 md
                 style={{
-                    marginTop: matchesMD ? "10em" : 0, marginBottom: matchesMD ? "10em" : 0
+                    marginTop: matchesMD ? "10em" : 0,
+                    marginBottom: matchesMD ? "10em" : 0
                 }}
             >
                 <Grid item>
@@ -262,12 +278,15 @@ export default function Mobileapps(props) {
                     </Typography>
                 </Grid>
                 <Grid item>
-                    <img src={"/assets/increaseEngagement.svg"} alt={"app with notification"}/>
+                    <img
+                        src={"/assets/increaseEngagement.svg"}
+                        alt={"app with notification"}
+                    />
                 </Grid>
             </Grid>
         </Grid>
         <Grid item>
             <CallToAction setValue={props.setValue}/>
         </Grid>
-    </Grid>)
+    </Grid>);
 }
