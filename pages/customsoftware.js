@@ -1,7 +1,8 @@
 import React from "react";
-import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
+import Head from "next/head";
+import Lottie from "react-lottie";
 import Link from "../src/Link";
-import Lottie from 'react-lottie'
+import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
 import documentsAnimation from "../src/animations/documentsAnimation/data";
 import scaleAnimation from "../src/animations/scaleAnimation/data.json";
@@ -9,21 +10,26 @@ import automationAnimation from "../src/animations/automationAnimation/data.json
 import uxAnimation from "../src/animations/uxAnimation/data";
 
 import CallToAction from "../src/ui/CallToAction";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
         maxWidth: "40em"
-    }, arrowContainer: {
+    },
+    arrowContainer: {
         marginTop: "0.5em"
-    }, rowContainer: {
-        paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
-            paddingLeft: "1.5em", paddingRight: "1.5em"
+    },
+    rowContainer: {
+        paddingLeft: "5em",
+        paddingRight: "5em",
+        [theme.breakpoints.down("sm")]: {
+            paddingLeft: "1.5em",
+            paddingRight: "1.5em"
         }
-    }, itemContainer: {
+    },
+    itemContainer: {
         maxWidth: "40em"
     }
-}))
+}));
 
 export default function Customsoftware(props) {
     const classes = useStyles()
@@ -33,22 +39,37 @@ export default function Customsoftware(props) {
     const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
 
     const documentsOptions = {
-        loop: true, autoplay: false, animationData: documentsAnimation, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: documentsAnimation,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+
     const scaleOptions = {
-        loop: true, autoplay: false, animationData: scaleAnimation, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: scaleAnimation,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+
     const automationOptions = {
-        loop: true, autoplay: false, animationData: automationAnimation, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: automationAnimation,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+
     const uxOptions = {
-        loop: true, autoplay: false, animationData: uxAnimation, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: uxAnimation,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
@@ -111,6 +132,10 @@ export default function Customsoftware(props) {
             >
                 <Grid item>
                     <Typography
+                        style={{
+                            lineHeight: matchesXS ? 1.1 : null,
+                            marginBottom: matchesXS ? "0.5em" : null
+                        }}
                         align={matchesMD ? "center" : undefined}
                         variant={"h1"}
                     >
@@ -120,14 +145,16 @@ export default function Customsoftware(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"body1"} paragraph
+                        variant={"body1"}
+                        paragraph
                     >
                         Whether we’re replacing legacy system or inventing new solutions,
                         Shahrooz Development is here to help your business tackle technology.
                     </Typography>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"body1"} paragraph
+                        variant={"body1"}
+                        paragraph
                     >
                         Using regular commercial software leaves you with a lot of stuff
                         you don’t need, without some of the stuff you do need, and
@@ -202,7 +229,11 @@ export default function Customsoftware(props) {
                 direction={"column"}
                 md
                 alignItems={"center"}
-                style={{maxWidth: "40em", marginTop: matchesSM ? "10em" : 0, marginBottom: matchesSM ? "10em" : 0}}
+                style={{
+                    maxWidth: "40em",
+                    marginTop: matchesSM ? "10em" : 0,
+                    marginBottom: matchesSM ? "10em" : 0
+                }}
             >
                 <Grid item>
                     <Typography variant={"h4"}>
@@ -305,7 +336,7 @@ export default function Customsoftware(props) {
                 direction={matchesSM ? "column" : "row"}
                 md
             >
-                <Grid item md>
+                <Grid item md style={{marginBottom: matchesSM ? "2em" : null}}>
                     <Lottie
                         options={scaleOptions}
                         style={{maxHeight: 260, maxWidth: 280}}
@@ -419,7 +450,7 @@ export default function Customsoftware(props) {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid item md>
+                <Grid item md style={{marginTop: matchesSM ? "2em" : null}}>
                     <Lottie
                         options={automationOptions}
                         isStopped={true}
@@ -434,7 +465,7 @@ export default function Customsoftware(props) {
                 direction={matchesSM ? "column" : "row"}
                 md
             >
-                <Grid item md>
+                <Grid item md style={{marginBottom: matchesSM ? "2em" : null}}>
                     <Lottie
                         options={uxOptions}
                         isStopped={true}
@@ -482,5 +513,5 @@ export default function Customsoftware(props) {
         <Grid item style={{marginTop: "20em"}}>
             <CallToAction setValue={props.setValue}/>
         </Grid>
-    </Grid>)
+    </Grid>);
 }

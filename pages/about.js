@@ -1,27 +1,44 @@
 import React from "react";
+import Head from "next/head";
 import {Avatar, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
 import CallToAction from "../src/ui/CallToAction";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     missionStatement: {
-        fontStyle: "italic", fontWeight: 300, fontSize: "1.5rem", maxWidth: "50em", lineHeight: 1.4
-    }, rowContainer: {
-        paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
-            paddingLeft: "1.5em", paddingRight: "1.5em"
+        fontStyle: "italic",
+        fontWeight: 300,
+        fontSize: "1.5rem",
+        maxWidth: "50em",
+        lineHeight: 1.4
+    },
+    rowContainer: {
+        paddingLeft: "5em",
+        paddingRight: "5em",
+        [theme.breakpoints.down("sm")]: {
+            paddingLeft: "1.5em",
+            paddingRight: "1.5em"
+        },
+        [theme.breakpoints.down("xs")]: {
+            paddingLeft: "1em",
+            paddingRight: "1em"
         }
-    }, avatar: {
-        height: "25em", width: "25em", [theme.breakpoints.down("sm")]: {
-            height: "20em", width: "20em", maxHeight: 300, maxWidth: 300
+    },
+    avatar: {
+        height: "25em",
+        width: "25em",
+        [theme.breakpoints.down("sm")]: {
+            height: "20em",
+            width: "20em",
+            maxHeight: 300, maxWidth: 300
         }
     }
-}))
+}));
 
 export default function About(props) {
-    const classes = useStyles()
-    const theme = useTheme()
-    const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
+    const classes = useStyles();
+    const theme = useTheme();
+    const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
     return (<Grid container direction={"column"}>
         <Head>
@@ -82,7 +99,7 @@ export default function About(props) {
             style={{marginTop: "10em", marginBottom: "10em"}}
             direction={matchesMD ? "column" : "row"}
             alignItems={matchesMD ? "center" : undefined}
-            justifyContent={"space-around"}
+            justifyContent={"space-between"}
         >
             <Grid item>
                 <Grid
@@ -210,5 +227,5 @@ export default function About(props) {
         <Grid item>
             <CallToAction setValue={props.setValue}/>
         </Grid>
-    </Grid>)
+    </Grid>);
 }
