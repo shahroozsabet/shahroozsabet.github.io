@@ -1,31 +1,46 @@
 import React from "react";
-import {Button, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
-import Link from "../src/Link";
-import ButtonArrow from "../src/ui/ButtonArrow";
 import Head from "next/head";
+import Link from "../src/Link";
+import {Button, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
+
+import ButtonArrow from "../src/ui/ButtonArrow";
 
 const useStyles = makeStyles(theme => ({
     specialText: {
-        fontFamily: "Pacifico", color: theme.palette.common.orange
-    }, subtitle: {
+        fontFamily: "Pacifico",
+        color: theme.palette.common.orange
+    },
+    subtitle: {
         marginBottom: "1em"
-    }, icon: {
-        marginLeft: "2em", [theme.breakpoints.down("xs")]: {
+    },
+    icon: {
+        marginLeft: "2em",
+        [theme.breakpoints.down("xs")]: {
             marginLeft: 0
         }
-    }, serviceContainer: {
-        marginTop: "10em", [theme.breakpoints.down("sm")]: {
+    },
+    serviceContainer: {
+        marginTop: "10em",
+        [theme.breakpoints.down("sm")]: {
             padding: 25
+        },
+        [theme.breakpoints.down("xs")]: {
+            padding: 5
         }
-    }, learnButton: {
-        ...theme.typography.learnButton, fontSize: "0.7rem", height: 35, padding: 5, [theme.breakpoints.down("sm")]: {
+    },
+    learnButton: {
+        ...theme.typography.learnButton,
+        fontSize: "0.7rem",
+        height: 35,
+        padding: 5,
+        [theme.breakpoints.down("sm")]: {
             marginBottom: "2em"
         }
     }
-}))
+}));
 
 export default function Services(props) {
-    const classes = useStyles()
+    const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -99,8 +114,8 @@ export default function Services(props) {
                         variant={"outlined"}
                         className={classes.learnButton}
                         onClick={() => {
-                            props.setValue(2);
-                            props.setSelectedIndex(2)
+                            props.setValue(1);
+                            props.setSelectedIndex(2);
                         }}
                     >
                         <span style={{marginRight: 10}}>Learn More</span>
@@ -132,16 +147,17 @@ export default function Services(props) {
             >
                 <Grid item
                       style={{
-                          marginLeft: matchesSM ? 0 : "5em", textAlign: matchesSM ? "center" : undefined
+                          marginLeft: matchesSM ? 0 : "5em",
+                          textAlign: matchesSM ? "center" : undefined
                       }}>
                     <Typography variant={"h4"}>
                         Custom Software Development
                     </Typography>
                     <Typography variant={"subtitle1"} className={classes.subtitle}>
-                        Save Energy. Save Time. Save Money
+                        Save Energy. Save Time. Save Money.
                     </Typography>
                     <Typography variant={"subtitle1"}>
-                        Complete digital solutions, from investigation to {" "}
+                        Complete digital solutions, from investigation to{" "}
                         <span className={classes.specialText}>celebration.</span>
                     </Typography>
                     <Button
@@ -224,5 +240,5 @@ export default function Services(props) {
                 </Grid>
             </Grid>
         </Grid>
-    </Grid>)
+    </Grid>);
 }

@@ -1,15 +1,19 @@
 import React from "react";
+import Link from "../Link";
 import {Button, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import ButtonArrow from "./ButtonArrow";
 
-import Link from "../Link";
-
 const useStyles = makeStyles(theme => ({
     learnButton: {
-        ...theme.typography.learnButton, fontSize: "0.7rem", height: 35, padding: 5, [theme.breakpoints.down("sm")]: {
+        ...theme.typography.learnButton,
+        fontSize: "0.7rem",
+        height: 35,
+        padding: 5,
+        [theme.breakpoints.down("sm")]: {
             marginBottom: "2em"
         }
-    }, background: {
+    },
+    background: {
         backgroundImage: `url("/assets/longJon.jpg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -18,9 +22,11 @@ const useStyles = makeStyles(theme => ({
         height: "60em",
         width: "100%",
         [theme.breakpoints.down("md")]: {
-            backgroundImage: `url("/assets/longJonMobile.jpg")`, backgroundAttachment: "inherit"
+            backgroundImage: `url("/assets/longJonMobile.jpg")`,
+            backgroundAttachment: "inherit"
         }
-    }, estimateButton: {
+    },
+    estimateButton: {
         ...theme.typography.estimate,
         borderRadius: 50,
         height: 80,
@@ -33,15 +39,16 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.secondary.light
         },
         [theme.breakpoints.down("sm")]: {
-            marginLeft: 0, marginRight: 0
+            marginLeft: 0,
+            marginRight: 0
         }
     }
-}))
+}));
 
 export default function CallToAction(props) {
     const classes = useStyles();
     const theme = useTheme();
-    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
+    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
     return (<Grid
         container
@@ -53,15 +60,27 @@ export default function CallToAction(props) {
         <Grid
             item
             style={{
-                marginLeft: matchesSM ? 0 : "5em", textAlign: matchesSM ? "center" : "inherit"
+                marginLeft: matchesSM ? 0 : "5em",
+                textAlign: matchesSM ? "center" : "inherit"
             }}
         >
             <Grid container direction={"column"}>
                 <Grid item>
-                    <Typography variant={"h1"}>
-                        Simple Software.<br/>Revolutionary Results.
+                    <Typography
+                        variant={"h1"}
+                        gutterBottom
+                        style={{lineHeight: matchesSM ? 1.1 : null}}
+                    >
+                        Simple Software.
+                        {matchesSM && <br/>}
+                        <br/>
+                        Revolutionary Results.
                     </Typography>
-                    <Typography variant={"subtitle2"} style={{fontSize: "1.5rem"}}>
+                    <Typography
+                        variant={"subtitle2"}
+                        gutterBottom
+                        style={{fontSize: matchesSM ? "1.25rem" : "1.5rem"}}
+                    >
                         Take advantage of the 21st Century.
                     </Typography>
                     <Grid
@@ -98,5 +117,5 @@ export default function CallToAction(props) {
                 Free Estimate
             </Button>
         </Grid>
-    </Grid>)
+    </Grid>);
 }

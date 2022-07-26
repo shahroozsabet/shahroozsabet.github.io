@@ -781,379 +781,377 @@ export default function Estimate() {
         </Grid>
     );
 
-    return (
-        <Grid container direction={"row"}>
-            <Head>
-                <title key="title">Free Custom Software Estimate | Shahrooz Development</title>
-                <meta
-                    name="description"
-                    key="description"
-                    content="Use our free online estimate calculator to instantly check the cost of your custom software, mobile app, or website design and development project."
+    return (<Grid container direction={"row"}>
+        <Head>
+            <title key="title">Free Custom Software Estimate | Shahrooz Development</title>
+            <meta
+                name="description"
+                key="description"
+                content="Use our free online estimate calculator to instantly check the cost of your custom software, mobile app, or website design and development project."
+            />
+            <meta
+                property="og:title"
+                content="Bringing Småland Technology to the World | Free Estimate"
+                key="og:title"
+            />
+            <meta
+                property="og:url"
+                key="og:url"
+                content="https://shahrooz.vercel.app/estimate"
+            />
+            <link
+                rel="canonical"
+                key="canonical"
+                href="https://shahrooz.vercel.app/estimate"
+            />
+        </Head>
+        <Grid
+            item
+            container
+            direction={"column"}
+            lg
+            alignItems={matchesMD ? "center" : undefined}
+        >
+            <Grid
+                item
+                style={{
+                    marginTop: "2em",
+                    marginLeft: matchesMD ? 0 : "5em"
+                }}
+            >
+                <Typography
+                    variant={"h1"}
+                    align={matchesMD ? "center" : undefined}
+                >
+                    Estimate
+                </Typography>
+            </Grid>
+            <Grid
+                item
+                style={{
+                    marginRight: matchesMD ? 0 : "10em",
+                    maxWidth: "50em",
+                    marginTop: "7.5em"
+                }}
+            >
+                <Lottie
+                    options={defaultOptions}
+                    isStopped
+                    height={"100%"}
+                    width={"100%"}
                 />
-                <meta
-                    property="og:title"
-                    content="Bringing Småland Technology to the World | Free Estimate"
-                    key="og:title"
-                />
-                <meta
-                    property="og:url"
-                    key="og:url"
-                    content="https://shahrooz.vercel.app/estimate"
-                />
-                <link
-                    rel="canonical"
-                    key="canonical"
-                    href="https://shahrooz.vercel.app/estimate"
-                />
-            </Head>
+            </Grid>
+        </Grid>
+        <Grid
+            item
+            container
+            direction={"column"}
+            alignItems={"center"}
+            lg
+            style={{
+                marginRight: matchesMD ? 0 : "2em",
+                marginBottom: "25em"
+            }}
+        >
+            {questions
+                .filter(question => question.active)
+                .map((question, index) => (
+                    <React.Fragment key={index}>
+                        <Grid item ref={myRef}>
+                            <Typography
+                                variant={"h1"}
+                                align={"center"}
+                                style={{
+                                    fontWeight: 500,
+                                    fontSize: "2.25rem",
+                                    marginTop: "5em",
+                                    lineHeight: 1.25,
+                                    marginLeft: matchesSM ? "1em" : 0,
+                                    marginRight: matchesSM ? "1em" : 0
+                                }}
+                            >
+                                {question.title}
+                            </Typography>
+                            <Typography
+                                variant={"body1"}
+                                align={"center"}
+                                style={{marginBottom: "2.5em"}}
+                                gutterBottom
+                            >
+                                {question.subtitle}
+                            </Typography>
+                        </Grid>
+                        <Grid item container>
+                            {question.options.map((option, index) => (<Grid
+                                    item
+                                    container
+                                    direction={"column"}
+                                    md
+                                    key={index}
+                                    component={Button}
+                                    onClick={() => handleSelect(option.id)}
+                                    style={{
+                                        display: "grid",
+                                        textTransform: "none",
+                                        borderRadius: 0,
+                                        marginBottom: matchesSM ? "1.5em" : 0,
+                                        backgroundColor: option.selected
+                                            ? theme.palette.common.orange
+                                            : null
+                                    }}
+                                >
+                                    <Grid item style={{maxWidth: "14em"}}>
+                                        <Typography
+                                            variant={"h6"}
+                                            align={"center"}
+                                            style={{
+                                                marginBottom: "1em"
+                                            }}
+                                        >
+                                            {option.title}
+                                        </Typography>
+                                        <Typography variant={"caption"} align={"center"}>
+                                            {option.subtitle}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <img
+                                            src={option.icon}
+                                            alt={option.iconAlt}
+                                            className={classes.icon}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </React.Fragment>
+                ))}
             <Grid
                 item
                 container
-                direction={"column"}
-                lg
-                alignItems={matchesMD ? "center" : undefined}
+                justifyContent={"space-between"}
+                style={{width: "18em", marginTop: "3em"}}
             >
+                <Grid item>
+                    <IconButton
+                        disabled={navigationPreviousDisabled()}
+                        onClick={previousQuestion}
+                    >
+                        <img
+                            src={navigationPreviousDisabled() ? "/assets/backArrowDisabled.svg" : "/assets/backArrow.svg"}
+                            alt={"Previous question"}
+                        />
+                    </IconButton>
+                </Grid>
+                <Grid item>
+                    <IconButton
+                        disabled={navigationNextDisabled()}
+                        onClick={nextQuestion}
+                    >
+                        <img
+                            src={
+                                navigationNextDisabled() ? "/assets/forwardArrowDisabled.svg" : "/assets/forwardArrow.svg"
+                            }
+                            alt={"Next question"}
+                        />
+                    </IconButton>
+                </Grid>
+            </Grid>
+            <Grid item>
+                <Button
+                    variant={"contained"}
+                    className={classes.estimateButton}
+                    disabled={estimateDisabled()}
+                    onClick={() => {
+                        setDialogOpen(true);
+                        getTotal();
+                        getPlatforms();
+                        getFeatures();
+                        getCustomFeatures();
+                        getCategory();
+                    }}
+                >
+                    Get Estimate
+                </Button>
+            </Grid>
+        </Grid>
+        <Dialog
+            open={dialogOpen}
+            onClose={() => setDialogOpen(false)}
+            fullWidth
+            maxWidth={"lg"}
+            fullScreen={matchesSM}
+            style={{zIndex: 1302}}
+        >
+            <Grid container justifyContent={"center"}>
                 <Grid
                     item
                     style={{
-                        marginTop: "2em",
-                        marginLeft: matchesMD ? 0 : "5em"
+                        marginTop: "1em"
+                        , marginBottom: "1em"
                     }}
                 >
-                    <Typography
-                        variant={"h1"}
-                        align={matchesMD ? "center" : undefined}
-                    >
+                    <Typography variant={"h1"} align={"center"}>
                         Estimate
                     </Typography>
                 </Grid>
-                <Grid
-                    item
-                    style={{
-                        marginRight: matchesMD ? 0 : "10em",
-                        maxWidth: "50em",
-                        marginTop: "7.5em"
-                    }}
-                >
-                    <Lottie
-                        options={defaultOptions}
-                        isStopped
-                        height={"100%"}
-                        width={"100%"}
-                    />
-                </Grid>
             </Grid>
-            <Grid
-                item
-                container
-                direction={"column"}
-                alignItems={"center"}
-                lg
-                style={{
-                    marginRight: matchesMD ? 0 : "2em",
-                    marginBottom: "25em"
-                }}
-            >
-                {questions
-                    .filter(question => question.active)
-                    .map((question, index) => (
-                        <React.Fragment key={index}>
-                            <Grid item ref={myRef}>
-                                <Typography
-                                    variant={"h1"}
-                                    align={"center"}
-                                    style={{
-                                        fontWeight: 500,
-                                        fontSize: "2.25rem",
-                                        marginTop: "5em",
-                                        lineHeight: 1.25,
-                                        marginLeft: matchesSM ? "1em" : 0,
-                                        marginRight: matchesSM ? "1em" : 0
-                                    }}
-                                >
-                                    {question.title}
-                                </Typography>
-                                <Typography
-                                    variant={"body1"}
-                                    align={"center"}
-                                    style={{marginBottom: "2.5em"}}
-                                    gutterBottom
-                                >
-                                    {question.subtitle}
-                                </Typography>
-                            </Grid>
-                            <Grid item container>
-                                {question.options.map((option, index) => (<Grid
-                                        item
-                                        container
-                                        direction={"column"}
-                                        md
-                                        key={index}
-                                        component={Button}
-                                        onClick={() => handleSelect(option.id)}
-                                        style={{
-                                            display: "grid",
-                                            textTransform: "none",
-                                            borderRadius: 0,
-                                            marginBottom: matchesSM ? "1.5em" : 0,
-                                            backgroundColor: option.selected
-                                                ? theme.palette.common.orange
-                                                : null
-                                        }}
-                                    >
-                                        <Grid item style={{maxWidth: "14em"}}>
-                                            <Typography
-                                                variant={"h6"}
-                                                align={"center"}
-                                                style={{
-                                                    marginBottom: "1em"
-                                                }}
-                                            >
-                                                {option.title}
-                                            </Typography>
-                                            <Typography variant={"caption"} align={"center"}>
-                                                {option.subtitle}
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <img
-                                                src={option.icon}
-                                                alt={option.iconAlt}
-                                                className={classes.icon}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </React.Fragment>
-                    ))}
+            <DialogContent>
                 <Grid
-                    item
                     container
-                    justifyContent={"space-between"}
-                    style={{width: "18em", marginTop: "3em"}}
+                    justifyContent={"space-around"}
+                    direction={matchesSM ? "column" : "row"}
+                    alignItems={matchesSM ? "center" : undefined}
                 >
-                    <Grid item>
-                        <IconButton
-                            disabled={navigationPreviousDisabled()}
-                            onClick={previousQuestion}
-                        >
-                            <img
-                                src={navigationPreviousDisabled() ? "/assets/backArrowDisabled.svg" : "/assets/backArrow.svg"}
-                                alt={"Previous question"}
-                            />
-                        </IconButton>
-                    </Grid>
-                    <Grid item>
-                        <IconButton
-                            disabled={navigationNextDisabled()}
-                            onClick={nextQuestion}
-                        >
-                            <img
-                                src={
-                                    navigationNextDisabled() ? "/assets/forwardArrowDisabled.svg" : "/assets/forwardArrow.svg"
-                                }
-                                alt={"Next question"}
-                            />
-                        </IconButton>
-                    </Grid>
-                </Grid>
-                <Grid item>
-                    <Button
-                        variant={"contained"}
-                        className={classes.estimateButton}
-                        disabled={estimateDisabled()}
-                        onClick={() => {
-                            setDialogOpen(true);
-                            getTotal();
-                            getPlatforms();
-                            getFeatures();
-                            getCustomFeatures();
-                            getCategory();
-                        }}
-                    >
-                        Get Estimate
-                    </Button>
-                </Grid>
-            </Grid>
-            <Dialog
-                open={dialogOpen}
-                onClose={() => setDialogOpen(false)}
-                fullWidth
-                maxWidth={"lg"}
-                fullScreen={matchesSM}
-                style={{zIndex: 1302}}
-            >
-                <Grid container justifyContent={"center"}>
                     <Grid
                         item
-                        style={{
-                            marginTop: "1em"
-                            , marginBottom: "1em"
-                        }}
-                    >
-                        <Typography variant={"h1"} align={"center"}>
-                            Estimate
-                        </Typography>
-                    </Grid>
-                </Grid>
-                <DialogContent>
-                    <Grid
                         container
-                        justifyContent={"space-around"}
-                        direction={matchesSM ? "column" : "row"}
-                        alignItems={matchesSM ? "center" : undefined}
+                        direction={"column"}
+                        md={7}
+                        style={{maxWidth: "20em"}}
                     >
                         <Grid
                             item
-                            container
-                            direction={"column"}
-                            md={7}
-                            style={{maxWidth: "20em"}}
+                            style={{marginBottom: "0.5em"}}
                         >
-                            <Grid
-                                item
-                                style={{marginBottom: "0.5em"}}
+                            <TextField
+                                label={"Name"}
+                                id={"name"}
+                                fullWidth
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            style={{marginBottom: "0.5em"}}
+                        >
+                            <TextField
+                                label={"Email"}
+                                error={emailHelper.length !== 0}
+                                helperText={emailHelper}
+                                id={"email"}
+                                fullWidth
+                                value={email}
+                                onChange={onChange}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            style={{marginBottom: "0.5em"}}
+                        >
+                            <TextField
+                                label={"Phone"}
+                                id={"phone"}
+                                fullWidth
+                                value={phone}
+                                onChange={(event) => setPhone(event.target.value)}
+                            />
+                        </Grid>
+                        <Grid item style={{maxWidth: "20em"}}>
+                            <TextField
+                                InputProps={{disableUnderline: true}}
+                                value={message}
+                                className={classes.message}
+                                multiline
+                                fullWidth
+                                placeholder="Tell us more about your project."
+                                minRows={10}
+                                maxRows={10}
+                                id={"message"}
+                                onChange={(event) => setMessage(event.target.value)}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Typography
+                                variant={"body1"}
+                                align={matchesSM ? "center" : undefined}
+                                paragraph
+                                style={{lineHeight: 1.25}}
                             >
-                                <TextField
-                                    label={"Name"}
-                                    id={"name"}
-                                    fullWidth
-                                    value={name}
-                                    onChange={(event) => setName(event.target.value)}
-                                />
-                            </Grid>
-                            <Grid
-                                item
-                                style={{marginBottom: "0.5em"}}
-                            >
-                                <TextField
-                                    label={"Email"}
-                                    error={emailHelper.length !== 0}
-                                    helperText={emailHelper}
-                                    id={"email"}
-                                    fullWidth
-                                    value={email}
-                                    onChange={onChange}
-                                />
-                            </Grid>
-                            <Grid
-                                item
-                                style={{marginBottom: "0.5em"}}
-                            >
-                                <TextField
-                                    label={"Phone"}
-                                    id={"phone"}
-                                    fullWidth
-                                    value={phone}
-                                    onChange={(event) => setPhone(event.target.value)}
-                                />
-                            </Grid>
-                            <Grid item style={{maxWidth: "20em"}}>
-                                <TextField
-                                    InputProps={{disableUnderline: true}}
-                                    value={message}
-                                    className={classes.message}
-                                    multiline
-                                    fullWidth
-                                    placeholder="Tell us more about your project."
-                                    minRows={10}
-                                    maxRows={10}
-                                    id={"message"}
-                                    onChange={(event) => setMessage(event.target.value)}
-                                />
-                            </Grid>
-                            <Grid item>
-                                <Typography
-                                    variant={"body1"}
-                                    align={matchesSM ? "center" : undefined}
-                                    paragraph
-                                    style={{lineHeight: 1.25}}
-                                >
-                                    We can create this digital solution for an estimated{" "}
-                                    <span className={classes.specialText}>
+                                We can create this digital solution for an estimated{" "}
+                                <span className={classes.specialText}>
                                     ${total.toFixed(2)}
                                 </span>
-                                </Typography>
-                                <Typography
-                                    variant={"body1"}
-                                    paragraph
-                                    align={matchesSM ? "center" : undefined}
-                                >
-                                    Fill out your name, number,
-                                    and email, place your request,
-                                    and we'll get back to you
-                                    with details moving forward,
-                                    and a final price.
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid
-                            item
-                            container
-                            direction={"column"}
-                            alignItems={matchesSM ? "center" : undefined}
-                            md={5}
-                            style={{maxWidth: "30em"}}
-                        >
-                            <Hidden smDown>
-                                <Grid item>
-                                    {questions.length > 2 ? softwareSelection : websiteSelection}
-                                </Grid>
-                            </Hidden>
-
-                            <Grid item>
-                                <Button
-                                    variant={"contained"}
-                                    className={classes.estimateButton}
-                                    onClick={sendEstimate}
-                                    disabled={
-                                        name.length === 0 ||
-                                        message.length === 0 ||
-                                        phone.length === 0 ||
-                                        email.length === 0 ||
-                                        emailHelper.length !== 0
-                                    }
-                                >
-                                    {loading ? <CircularProgress/> :
-                                        <React.Fragment>
-                                            Place Request
-                                            <img
-                                                src={"/assets/send.svg"}
-                                                alt={"paper airplane"}
-                                                style={{marginLeft: "0.5em"}}
-                                            />
-                                        </React.Fragment>
-                                    }
-                                </Button>
-                            </Grid>
-                            <Hidden mdUp>
-                                <Grid item style={{marginBottom: matchesSM ? "5em" : 0}}>
-                                    <Button
-                                        style={{fontWeight: 300}}
-                                        color={"primary"}
-                                        onClick={() => setDialogOpen(false)}
-                                    >
-                                        Cancel
-                                    </Button>
-                                </Grid>
-                            </Hidden>
+                            </Typography>
+                            <Typography
+                                variant={"body1"}
+                                paragraph
+                                align={matchesSM ? "center" : undefined}
+                            >
+                                Fill out your name, number,
+                                and email, place your request,
+                                and we'll get back to you
+                                with details moving forward,
+                                and a final price.
+                            </Typography>
                         </Grid>
                     </Grid>
-                </DialogContent>
-            </Dialog>
-            <Snackbar
-                open={alert.open}
-                message={alert.message}
-                ContentProps={{
-                    style: {
-                        backgroundColor: alert.backgroundColor
-                    }
-                }}
-                anchorOrigin={{vertical: "top", horizontal: "center"}}
-                onClose={() => setAlert({...alert, open: false})}
-                autoHideDuration={4000}
-            />
-        </Grid>
-    );
+                    <Grid
+                        item
+                        container
+                        direction={"column"}
+                        alignItems={matchesSM ? "center" : undefined}
+                        md={5}
+                        style={{maxWidth: "30em"}}
+                    >
+                        <Hidden smDown>
+                            <Grid item>
+                                {questions.length > 2 ? softwareSelection : websiteSelection}
+                            </Grid>
+                        </Hidden>
+
+                        <Grid item>
+                            <Button
+                                variant={"contained"}
+                                className={classes.estimateButton}
+                                onClick={sendEstimate}
+                                disabled={
+                                    name.length === 0 ||
+                                    message.length === 0 ||
+                                    phone.length === 0 ||
+                                    email.length === 0 ||
+                                    emailHelper.length !== 0
+                                }
+                            >
+                                {loading ? <CircularProgress/> :
+                                    <React.Fragment>
+                                        Place Request
+                                        <img
+                                            src={"/assets/send.svg"}
+                                            alt={"paper airplane"}
+                                            style={{marginLeft: "0.5em"}}
+                                        />
+                                    </React.Fragment>
+                                }
+                            </Button>
+                        </Grid>
+                        <Hidden mdUp>
+                            <Grid item style={{marginBottom: matchesSM ? "5em" : 0}}>
+                                <Button
+                                    style={{fontWeight: 300}}
+                                    color={"primary"}
+                                    onClick={() => setDialogOpen(false)}
+                                >
+                                    Cancel
+                                </Button>
+                            </Grid>
+                        </Hidden>
+                    </Grid>
+                </Grid>
+            </DialogContent>
+        </Dialog>
+        <Snackbar
+            open={alert.open}
+            message={alert.message}
+            ContentProps={{
+                style: {
+                    backgroundColor: alert.backgroundColor
+                }
+            }}
+            anchorOrigin={{vertical: "top", horizontal: "center"}}
+            onClose={() => setAlert({...alert, open: false})}
+            autoHideDuration={4000}
+        />
+    </Grid>);
 }
