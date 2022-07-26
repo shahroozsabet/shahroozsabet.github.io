@@ -1,30 +1,36 @@
 import React from "react";
-import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
+import Head from "next/head";
 import Link from "../src/Link";
+import {Grid, Hidden, IconButton, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
 import CallToAction from "../src/ui/CallToAction";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     heading: {
         maxWidth: "40em"
-    }, arrowContainer: {
+    },
+    arrowContainer: {
         marginTop: "0.5em"
-    }, rowContainer: {
-        paddingLeft: "5em", paddingRight: "5em", [theme.breakpoints.down("sm")]: {
-            paddingLeft: "1.5em", paddingRight: "1.5em"
+    },
+    rowContainer: {
+        paddingLeft: "5em",
+        paddingRight: "5em",
+        [theme.breakpoints.down("sm")]: {
+            paddingLeft: "1.5em",
+            paddingRight: "1.5em"
         }
-    }, paragraphContainer: {
+    },
+    paragraphContainer: {
         maxWidth: "30em"
     }
 }))
 
 export default function Websites(props) {
-    const classes = useStyles()
-    const theme = useTheme()
-    const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
-    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
-    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
+    const classes = useStyles();
+    const theme = useTheme();
+    const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+    const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
     return (<Grid container direction={"column"}>
         <Head>
@@ -84,6 +90,10 @@ export default function Websites(props) {
             >
                 <Grid item>
                     <Typography
+                        style={{
+                            lineHeight: matchesXS ? 1.1 : null,
+                            marginBottom: matchesXS ? "0.5em" : null
+                        }}
                         align={matchesMD ? "center" : undefined}
                         variant={"h1"}
                     >
@@ -93,7 +103,8 @@ export default function Websites(props) {
                 <Grid item>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"body1"} paragraph
+                        variant={"body1"}
+                        paragraph
                     >
                         Having a website is a necessity in today’s business world. They
                         give you one central, public location to let people know who you
@@ -101,7 +112,8 @@ export default function Websites(props) {
                     </Typography>
                     <Typography
                         align={matchesMD ? "center" : undefined}
-                        variant={"body1"} paragraph
+                        variant={"body1"}
+                        paragraph
                     >
                         From simply having your hours posted to having a full fledged
                         online store, making yourself as accessible as possible to users
@@ -256,7 +268,7 @@ export default function Websites(props) {
             alignItems={"center"}
             justifyContent={"flex-end"}
             className={classes.rowContainer}
-            style={{marginBottom: "15em", marginTop: "15em"}}
+            style={{marginTop: "15em", marginBottom: "15em"}}
         >
             <Grid item>
                 <Grid container direction={"column"}>
@@ -266,7 +278,9 @@ export default function Websites(props) {
                             variant={"h4"}
                             gutterBottom
                         >
-                            Search Engine<br/>Optimization
+                            Search Engine
+                            <br/>
+                            Optimization
                         </Typography>
                     </Grid>
                     <Grid item>
@@ -309,5 +323,5 @@ export default function Websites(props) {
         <Grid item>
             <CallToAction setValue={props.setValue}/>
         </Grid>
-    </Grid>)
+    </Grid>);
 }

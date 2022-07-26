@@ -1,20 +1,25 @@
 import React from "react";
-import Lottie from 'react-lottie'
+import Head from "next/head";
+import Lottie from "react-lottie";
 import Link from "../src/Link";
 import {Button, Card, CardContent, Grid, makeStyles, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import ButtonArrow from "../src/ui/ButtonArrow";
 
 import CallToAction from "../src/ui/CallToAction";
 
-import animationData from '../src/animations/landinganimation/data'
-import Head from "next/head";
+import animationData from "../src/animations/landinganimation/data";
 
 const useStyles = makeStyles(theme => ({
     animation: {
-        maxWidth: "50em", minWidth: "21em", marginTop: "2em", marginLeft: "10%", [theme.breakpoints.down("sm")]: {
+        maxWidth: "50em",
+        minWidth: "21em",
+        marginTop: "2em",
+        marginLeft: "10%",
+        [theme.breakpoints.down("sm")]: {
             maxWidth: "30em"
         }
-    }, estimateButton: {
+    },
+    estimateButton: {
         ...theme.typography.estimate,
         backgroundColor: theme.palette.common.orange,
         borderRadius: 50,
@@ -24,52 +29,86 @@ const useStyles = makeStyles(theme => ({
         "&:hover": {
             backgroundColor: theme.palette.secondary.light
         }
-    }, buttonContainer: {
+    },
+    buttonContainer: {
         marginTop: "1em"
-    }, learnButtonHero: {
-        ...theme.typography.learnButton, fontSize: "0.9rem", height: 45, width: 145
-    }, learnButton: {
-        ...theme.typography.learnButton, fontSize: "0.7rem", height: 35, padding: 5, [theme.breakpoints.down("sm")]: {
+    },
+    learnButtonHero: {
+        ...theme.typography.learnButton,
+        fontSize: "0.9rem",
+        height: 45,
+        width: 145
+    },
+    learnButton: {
+        ...theme.typography.learnButton,
+        fontSize: "0.7rem",
+        height: 35,
+        padding: 5,
+        [theme.breakpoints.down("sm")]: {
             marginBottom: "2em"
         }
-    }, mainContainer: {
-        marginTop: "5em", [theme.breakpoints.down("md")]: {
+    },
+    mainContainer: {
+        marginTop: "5em",
+        [theme.breakpoints.down("md")]: {
             marginTop: "3em"
-        }, [theme.breakpoints.down("xs")]: {
+        },
+        [theme.breakpoints.down("xs")]: {
             marginTop: "2em"
         }
-    }, heroTextContainer: {
-        minWidth: "21.5em", marginLeft: "1em", [theme.breakpoints.down("xs")]: {
+    },
+    heroTextContainer: {
+        minWidth: "21.5em",
+        marginLeft: "1em",
+        [theme.breakpoints.down("xs")]: {
             marginLeft: 0
         }
-    }, specialText: {
-        fontFamily: "Pacifico", color: theme.palette.common.orange
-    }, subtitle: {
+    },
+    specialText: {
+        fontFamily: "Pacifico",
+        color: theme.palette.common.orange
+    },
+    subtitle: {
         marginBottom: "1em"
-    }, icon: {
-        marginLeft: "2em", [theme.breakpoints.down("xs")]: {
+    },
+    icon: {
+        marginLeft: "2em",
+        [theme.breakpoints.down("xs")]: {
             marginLeft: 0
         }
-    }, serviceContainer: {
-        marginTop: "12em", [theme.breakpoints.down("sm")]: {
+    },
+    serviceContainer: {
+        marginTop: "12em",
+        [theme.breakpoints.down("sm")]: {
             padding: 25
+        },
+        [theme.breakpoints.down("xs")]: {
+            padding: 5
         }
-    }, revolutionBackground: {
+    },
+    revolutionBackground: {
         backgroundImage: `url("/assets/repeatingBackground.svg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         height: "100%",
         width: "100%"
-    }, revolutionCard: {
+    },
+    revolutionCard: {
         position: "absolute",
         boxShadow: theme.shadows[10],
         borderRadius: 15,
         padding: "10em",
         [theme.breakpoints.down("sm")]: {
-            paddingTop: "8em", paddingBottom: "8em", paddingLeft: 0, paddingRight: 0, borderRadius: 0, width: "100%"
+            paddingTop: "8em",
+            paddingBottom: "8em",
+            paddingLeft: 0,
+            paddingRight: 0,
+            borderRadius: 0,
+            width: "100%"
         }
-    }, infoBackground: {
+    },
+    infoBackground: {
         backgroundImage: `url("/assets/infoBackground.svg")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -77,7 +116,7 @@ const useStyles = makeStyles(theme => ({
         height: "100%",
         width: "100%"
     }
-}))
+}));
 
 export default function Index(props) {
     const classes = useStyles();
@@ -86,10 +125,14 @@ export default function Index(props) {
     const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
     const defaultOptions = {
-        loop: true, autoplay: false, animationData: animationData, rendererSettings: {
+        loop: true,
+        autoplay: false,
+        animationData: animationData,
+        rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+
     return (<Grid container direction={"column"} className={classes.mainContainer}>
         <Head>
             <title key="title">Custom Software, Mobile Apps, and Websites | Shahrooz Development</title>
@@ -114,7 +157,9 @@ export default function Index(props) {
                 href="https://shahrooz.herokuapp.com"
             />
         </Head>
-        <Grid item> {/*-----Hero Block-----*/}
+        <Grid item>
+            {" "}
+            {/*-----Hero Block-----*/}
             <Grid container justifyContent={"flex-end"} alignItems={"center"} direction={"row"}>
                 <Grid sm item className={classes.heroTextContainer}>
                     <Typography variant={"h1"} align={"center"}>
@@ -174,16 +219,18 @@ export default function Index(props) {
             >
                 <Grid item
                       style={{
-                          marginLeft: matchesSM ? 0 : "5em", textAlign: matchesSM ? "center" : undefined
-                      }}>
+                          marginLeft: matchesSM ? 0 : "5em",
+                          textAlign: matchesSM ? "center" : undefined
+                      }}
+                >
                     <Typography variant={"h4"}>
                         Custom Software Development
                     </Typography>
                     <Typography variant={"subtitle1"} className={classes.subtitle}>
-                        Save Energy. Save Time. Save Money
+                        Save Energy. Save Time. Save Money.
                     </Typography>
                     <Typography variant={"subtitle1"}>
-                        Complete digital solutions, from investigation to {" "}
+                        Complete digital solutions, from investigation to{" "}
                         <span className={classes.specialText}>celebration.</span>
                     </Typography>
                     <Button
@@ -242,7 +289,7 @@ export default function Index(props) {
                         variant={"outlined"}
                         className={classes.learnButton}
                         onClick={() => {
-                            props.setValue(2);
+                            props.setValue(1);
                             props.setSelectedIndex(2)
                         }}
                     >
@@ -283,7 +330,7 @@ export default function Index(props) {
                         Reach More. Discover More. Sell More.
                     </Typography>
                     <Typography variant={"subtitle1"}>
-                        Optimized for Search engines, built for speed.
+                        Optimized for Search Engines,{matchesXS && <br/>}built for speed.
                     </Typography>
                     <Button
                         component={Link}
@@ -292,7 +339,7 @@ export default function Index(props) {
                         className={classes.learnButton}
                         onClick={() => {
                             props.setValue(1);
-                            props.setSelectedIndex(3)
+                            props.setSelectedIndex(3);
                         }}
                     >
                         <span style={{marginRight: 10}}>Learn More</span>
@@ -340,8 +387,8 @@ export default function Index(props) {
                                 <Button
                                     component={Link}
                                     href={"/revolution"}
-                                    variant={"outlined"}
                                     className={classes.learnButtonHero}
+                                    variant={"outlined"}
                                     onClick={() => props.setValue(2)}
                                 >
                                     <span style={{marginRight: 10}}>Learn More</span>
@@ -462,5 +509,5 @@ export default function Index(props) {
             {/*-----Call To Action Block-----*/}
             <CallToAction setValue={props.setValue}/>
         </Grid>
-    </Grid>)
+    </Grid>);
 }
