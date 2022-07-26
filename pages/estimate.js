@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import Head from "next/head";
 import axios from "axios";
 import {cloneDeep} from "lodash";
@@ -318,6 +318,9 @@ export default function Estimate() {
     const theme = useTheme();
     const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+
+    const myRef = useRef(null);
 
     const [questions, setQuestions] = useState(defaultQuestions);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -331,7 +334,8 @@ export default function Estimate() {
     const [message, setMessage] = useState("");
 
     const [total, setTotal] = useState(0);
-    const [service, setService] = useState("");
+
+    const [service, setService] = useState([]);
     const [platforms, setPlatforms] = useState([]);
     const [features, setFeatures] = useState([]);
     const [customFeatures, setCustomFeatures] = useState("");
@@ -356,6 +360,9 @@ export default function Estimate() {
     };
 
     const nextQuestion = () => {
+        if (matchesXS) {
+            window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         const newQuestions = cloneDeep(questions);
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
@@ -368,6 +375,9 @@ export default function Estimate() {
     };
 
     const previousQuestion = () => {
+        if (matchesXS) {
+            window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         const newQuestions = cloneDeep(questions);
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
@@ -399,7 +409,7 @@ export default function Estimate() {
         }
     };
 
-    const handleSelect = (id) => {
+    const handleSelect = id => {
         const newQuestions = cloneDeep(questions);
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
@@ -423,6 +433,9 @@ export default function Estimate() {
 
         switch (newSelected.title) {
             case "Custom Software Development":
+                if (matchesXS) {
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(softwareQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -432,6 +445,9 @@ export default function Estimate() {
                 setUsers("");
                 break;
             case "Mobile App Development":
+                if (matchesXS) {
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(softwareQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -441,6 +457,9 @@ export default function Estimate() {
                 setUsers("");
                 break;
             case "Website Development":
+                if (matchesXS) {
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(websiteQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -578,6 +597,7 @@ export default function Estimate() {
                         total: total,
                         category: category,
                         service: service,
+                        platforms: platforms,
                         features: features,
                         customFeatures: customFeatures,
                         users: users
@@ -645,7 +665,7 @@ export default function Estimate() {
                 </Grid>
                 <Grid item xs={10}>
                     <Typography variant={"body1"}>
-                        {`You want ${service} `}
+                        You want {service}
                         {platforms.length > 0
                             ? ` for ${
                                 //if only web application is selected...
@@ -710,9 +730,7 @@ export default function Estimate() {
                                             <span key={index}>{`${feature}, `}</span>
                                         ))
                             : null}
-                        {features.length > 0 &&
-                        features.length !== 1 &&
-                        features.length !== 2
+                        {features.length > 2
                             ? //...and then finally add the last feature with 'and' in front of it
                             ` and ${features[features.length - 1]}.`
                             : null}
@@ -730,8 +748,7 @@ export default function Estimate() {
                 <Grid item xs={10}>
                     <Typography variant={"body1"}>
                         The custom features will be of {customFeatures.toLowerCase()}
-                        {`, and the project will be used by about ${users}
-                                             users.`}
+                        {`, and the project will be used by about ${users} users.`}
                     </Typography>
                 </Grid>
             </Grid>
@@ -754,7 +771,7 @@ export default function Estimate() {
                 </Grid>
                 <Grid item xs={10}>
                     <Typography variant={"body1"}>
-                        {'You want '}
+                        You want{" "}
                         {category === "Basic"
                             ? "a Basic Website."
                             : `an ${category} Website.`}
@@ -841,10 +858,10 @@ export default function Estimate() {
                     .filter(question => question.active)
                     .map((question, index) => (
                         <React.Fragment key={index}>
-                            <Grid item>
+                            <Grid item ref={myRef}>
                                 <Typography
-                                    align={"center"}
                                     variant={"h1"}
+                                    align={"center"}
                                     style={{
                                         fontWeight: 500,
                                         fontSize: "2.25rem",
@@ -869,6 +886,9 @@ export default function Estimate() {
                                 {question.options.map((option, index) => (<Grid
                                         item
                                         container
+                                        direction={"column"}
+                                        md
+                                        key={index}
                                         component={Button}
                                         onClick={() => handleSelect(option.id)}
                                         style={{
@@ -878,25 +898,20 @@ export default function Estimate() {
                                             marginBottom: matchesSM ? "1.5em" : 0,
                                             backgroundColor: option.selected
                                                 ? theme.palette.common.orange
-                                                : undefined
+                                                : null
                                         }}
-                                        direction={"column"}
-                                        alignItems="center"
-                                        md
-                                        key={index}
                                     >
                                         <Grid item style={{maxWidth: "14em"}}>
                                             <Typography
-                                                align={"center"}
                                                 variant={"h6"}
+                                                align={"center"}
                                                 style={{
-                                                    lineHeight: 1,
                                                     marginBottom: "1em"
                                                 }}
                                             >
                                                 {option.title}
                                             </Typography>
-                                            <Typography align={"center"} variant={"caption"}>
+                                            <Typography variant={"caption"} align={"center"}>
                                                 {option.subtitle}
                                             </Typography>
                                         </Grid>
@@ -946,8 +961,8 @@ export default function Estimate() {
                 <Grid item>
                     <Button
                         variant={"contained"}
-                        disabled={estimateDisabled()}
                         className={classes.estimateButton}
+                        disabled={estimateDisabled()}
                         onClick={() => {
                             setDialogOpen(true);
                             getTotal();
@@ -966,14 +981,15 @@ export default function Estimate() {
                 onClose={() => setDialogOpen(false)}
                 fullWidth
                 maxWidth={"lg"}
-                style={{zIndex: 1302}}
                 fullScreen={matchesSM}
+                style={{zIndex: 1302}}
             >
                 <Grid container justifyContent={"center"}>
                     <Grid
                         item
                         style={{
                             marginTop: "1em"
+                            , marginBottom: "1em"
                         }}
                     >
                         <Typography variant={"h1"} align={"center"}>
@@ -1033,7 +1049,7 @@ export default function Estimate() {
                                     onChange={(event) => setPhone(event.target.value)}
                                 />
                             </Grid>
-                            <Grid item>
+                            <Grid item style={{maxWidth: "20em"}}>
                                 <TextField
                                     InputProps={{disableUnderline: true}}
                                     value={message}
@@ -1050,9 +1066,9 @@ export default function Estimate() {
                             <Grid item>
                                 <Typography
                                     variant={"body1"}
-                                    paragraph
                                     align={matchesSM ? "center" : undefined}
-                                    style={{lineHeight: 1.1}}
+                                    paragraph
+                                    style={{lineHeight: 1.25}}
                                 >
                                     We can create this digital solution for an estimated{" "}
                                     <span className={classes.specialText}>
@@ -1076,21 +1092,28 @@ export default function Estimate() {
                             item
                             container
                             direction={"column"}
+                            alignItems={matchesSM ? "center" : undefined}
                             md={5}
                             style={{maxWidth: "30em"}}
-                            alignItems={matchesSM ? "center" : undefined}
                         >
                             <Hidden smDown>
                                 <Grid item>
                                     {questions.length > 2 ? softwareSelection : websiteSelection}
                                 </Grid>
                             </Hidden>
+
                             <Grid item>
                                 <Button
                                     variant={"contained"}
                                     className={classes.estimateButton}
                                     onClick={sendEstimate}
-                                    disabled={name.length === 0 || message.length === 0 || phone.length === 0 || email.length === 0 || emailHelper.length !== 0}
+                                    disabled={
+                                        name.length === 0 ||
+                                        message.length === 0 ||
+                                        phone.length === 0 ||
+                                        email.length === 0 ||
+                                        emailHelper.length !== 0
+                                    }
                                 >
                                     {loading ? <CircularProgress/> :
                                         <React.Fragment>
