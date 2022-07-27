@@ -2,13 +2,17 @@ import React, {useEffect, useState} from "react";
 import {
     AppBar,
     Button,
+    ClickAwayListener,
+    Grow,
     Hidden,
     IconButton,
     List,
     ListItem,
     ListItemText,
-    Menu,
     MenuItem,
+    MenuList,
+    Paper,
+    Popper,
     SwipeableDrawer,
     Tab,
     Tabs,
@@ -81,7 +85,8 @@ const useStyles = makeStyles(theme => ({
     menu: {
         backgroundColor: theme.palette.common.blue,
         color: "white",
-        borderRadius: "0px"
+        borderRadius: "0px",
+        zIndex: 1302
     },
     menuItem: {
         ...theme.typography.tab,
@@ -124,6 +129,7 @@ const useStyles = makeStyles(theme => ({
 export default function Header(props) {
     const classes = useStyles();
     const theme = useTheme();
+    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -134,41 +140,47 @@ export default function Header(props) {
         props.setValue(newValue);
     };
 
-    const handleClick = (e) => {
+    const handleClick = e => {
         setAnchorEl(e.currentTarget);
         setOpenMenu(true);
     };
 
-    function handleMenuItemClick(i) {
+    const handleMenuItemClick = (i) => {
         setAnchorEl(null);
         setOpenMenu(false);
         props.setSelectedIndex(i);
-    }
+    };
 
     const handleClose = () => {
         setAnchorEl(null);
         setOpenMenu(false);
     };
 
-    let menuOptions = [
-        {name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0},
+    function handleListKeyDown(event) {
+        if (event.key === "Tab") {
+            event.preventDefault();
+            setOpen(false);
+        }
+    }
+
+    const menuOptions = [
         {
             name: "Custom Software Development",
             link: "/customsoftware",
             activeIndex: 1,
-            selectedIndex: 1
+            selectedIndex: 0
         },
         {
             name: "Mobile App Development",
             link: "/mobileapps",
             activeIndex: 1,
-            selectedIndex: 2
+            selectedIndex: 1
         },
         {
             name: "Website Development",
             link: "/websites",
             activeIndex: 1,
-            selectedIndex: 3
+            selectedIndex: 2
         }
     ];
 
@@ -230,6 +242,7 @@ export default function Header(props) {
                         aria-owns={route.ariaOwns}
                         aria-haspopup={route.ariaPopup}
                         onMouseOver={route.mouseOver}
+                        onMouseLeave={() => setOpenMenu(false)}
                     />
                 ))}
             </Tabs>
@@ -245,42 +258,65 @@ export default function Header(props) {
             >
                 Free Estimate
             </Button>
-            <Menu
-                id={"simple-menu"}
-                anchorEl={anchorEl}
+            <Popper
                 open={openMenu}
-                onClose={handleClose}
-                classes={{paper: classes.menu}}
-                MenuListProps={{
-                    onMouseLeave: handleClose
-                }}
-                elevation={0}
-                style={{zIndex: 1302}}
-                keepMounted
+                anchorEl={anchorEl}
+                placement="bottom-start"
+                role={undefined}
+                transition
+                disablePortal
             >
-                {menuOptions.map((option, i) => (
-                    <MenuItem
-                        key={`${option}${i}`}
-                        component={Link}
-                        href={option.link}
-                        classes={{root: classes.menuItem}}
-                        onClick={() => {
-                            handleMenuItemClick(i);
-                            props.setValue(1);
-                            handleClose();
+                {({TransitionProps, placement}) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{
+                            transformOrigin: "top left"
                         }}
-                        selected={i === props.selectedIndex && props.value === 1}
                     >
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </Menu>
+                        <Paper classes={{root: classes.menu}} elevation={0}>
+                            <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList
+                                    onMouseOver={() => setOpenMenu(true)}
+                                    onMouseLeave={handleClose}
+                                    disablePadding
+                                    autoFocusItem={false}
+                                    id="simple-menu"
+                                    onKeyDown={handleListKeyDown}
+                                >
+                                    {menuOptions.map((option, i) => (
+                                        <MenuItem
+                                            key={`${option}${i}`}
+                                            component={Link}
+                                            href={option.link}
+                                            classes={{root: classes.menuItem}}
+                                            onClick={event => {
+                                                handleMenuItemClick(i);
+                                                props.setValue(1);
+                                                handleClose();
+                                            }}
+                                            selected={
+                                                i === props.selectedIndex &&
+                                                props.value === 1 &&
+                                                window.location.pathname !== "/services"
+                                            }
+                                        >
+                                            {option.name}
+                                        </MenuItem>
+                                    ))}
+                                </MenuList>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
         </React.Fragment>
     );
 
     const drawer = (
         <React.Fragment>
             <SwipeableDrawer
+                disableBackdropTransition={!iOS}
+                disableDiscovery={iOS}
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 onOpen={() => setOpenDrawer(true)}
