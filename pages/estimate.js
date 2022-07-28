@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import ReactGA from "react-ga";
 import Head from "next/head";
 import axios from "axios";
 import {cloneDeep} from "lodash";
@@ -90,10 +91,7 @@ const defaultQuestions = [
 ];
 
 const softwareQuestions = [
-    {
-        ...defaultQuestions[0],
-        active: false
-    },
+    {...defaultQuestions[0], active: false},
     {
         id: 2,
         title: "Which platforms do you need supported?",
@@ -272,10 +270,7 @@ const softwareQuestions = [
 ];
 
 const websiteQuestions = [
-    {
-        ...defaultQuestions[0],
-        active: false
-    },
+    {...defaultQuestions[0], active: false},
     {
         id: 2,
         title: "Which type of website are you wanting?",
@@ -584,6 +579,10 @@ export default function Estimate() {
 
     const sendEstimate = () => {
         setLoading(true);
+        ReactGA.event({
+            category: "Estimate",
+            action: "Estimate Sent"
+        });
 
         axios
             .get(
@@ -607,7 +606,7 @@ export default function Estimate() {
             .then(res => {
                 setAlert({
                     open: true,
-                    message: "Estimate placed successfully!",
+                    message: "Estimate placed successfully.",
                     backgroundColor: "#4BB543"
                 });
                 setDialogOpen(false);
@@ -615,7 +614,7 @@ export default function Estimate() {
             .catch(err => {
                 setAlert({
                     open: true,
-                    message: "Something went wrong, please try again!",
+                    message: "Something went wrong, please try again.",
                     backgroundColor: "#FF3232"
                 });
                 console.error(err);
@@ -838,8 +837,7 @@ export default function Estimate() {
                     options={defaultOptions}
                     isStopped
                     height={"100%"}
-                    width={"100%"}
-                />
+                    width={"100%"}/>
             </Grid>
         </Grid>
         <Grid
@@ -969,6 +967,10 @@ export default function Estimate() {
                         getFeatures();
                         getCustomFeatures();
                         getCategory();
+                        ReactGA.event({
+                            category: "Estimate",
+                            action: "Estimate Checked"
+                        });
                     }}
                 >
                     Get Estimate
