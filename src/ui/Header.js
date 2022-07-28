@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import ReactGA from "react-ga";
 import {
     Accordion,
     AccordionDetails,
@@ -241,6 +242,7 @@ export default function Header(props) {
 
     useEffect(() => {
         activeIndex();
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }, [path]);
 
     const tabs = (
