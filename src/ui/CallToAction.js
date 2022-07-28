@@ -112,7 +112,13 @@ export default function CallToAction(props) {
                 href={"/estimate"}
                 variant={"contained"}
                 className={classes.estimateButton}
-                onClick={() => props.setValue(false)}
+                onClick={() => {
+                    props.setValue(false);
+                    ReactGA.event({
+                        category: "Estimate",
+                        action: "Call to Action Pressed"
+                    });
+                }}
             >
                 Free Estimate
             </Button>

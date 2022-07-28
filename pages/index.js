@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 import Head from "next/head";
 import Lottie from "react-lottie";
 import Link from "../src/Link";
@@ -182,6 +183,10 @@ export default function Index(props) {
                                 variant={"contained"}
                                 onClick={() => {
                                     props.setValue(false);
+                                    ReactGA.event({
+                                        category: "Estimate",
+                                        action: "Home Page Pressed"
+                                    });
                                 }}
                             >
                                 Free Estimate

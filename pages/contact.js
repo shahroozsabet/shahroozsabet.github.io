@@ -1,5 +1,8 @@
 import React, {useState} from "react";
+import ReactGA from "react-ga";
+import Head from "next/head";
 import axios from "axios";
+import Link from "../src/Link";
 import {
     Button,
     CircularProgress,
@@ -13,10 +16,8 @@ import {
     useMediaQuery,
     useTheme
 } from "@material-ui/core";
-import Link from "../src/Link";
 
 import ButtonArrow from "../src/ui/ButtonArrow";
-import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -43,16 +44,23 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.secondary.light
         },
         [theme.breakpoints.down("md")]: {
-            marginLeft: 0, marginRight: 0
+            marginLeft: 0,
+            marginRight: 0
         }
     },
     learnButton: {
-        ...theme.typography.learnButton, fontSize: "0.7rem", height: 35, padding: 5, [theme.breakpoints.down("md")]: {
+        ...theme.typography.learnButton,
+        fontSize: "0.7rem",
+        height: 35,
+        padding: 5,
+        [theme.breakpoints.down("md")]: {
             marginBottom: "2em"
         }
     },
     message: {
-        border: `2px solid ${theme.palette.common.blue}`, marginTop: "5em", borderRadius: 5
+        border: `2px solid ${theme.palette.common.blue}`,
+        marginTop: "5em",
+        borderRadius: 5
     },
     sendButton: {
         ...theme.typography.estimate,
@@ -69,7 +77,7 @@ const useStyles = makeStyles(theme => ({
             width: 225
         }
     }
-}))
+}));
 
 export default function Contact(props) {
     const classes = useStyles();
@@ -90,19 +98,25 @@ export default function Contact(props) {
 
     const [loading, setLoading] = useState(false);
 
-    const [alert, setAlerts] = useState({open: false, message: "", backgroundColor: ""});
+    const [alert, setAlert] = useState({
+        open: false,
+        message: "",
+        backgroundColor: ""
+    });
 
     const onChange = event => {
         let valid;
         switch (event.target.id) {
-            case 'email':
-                setEmail(event.target.value)
-                valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value)
+            case "email":
+                setEmail(event.target.value);
+                valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                    event.target.value
+                );
 
                 if (!valid) {
-                    setEmailHelper("Invalid email")
+                    setEmailHelper("Invalid email");
                 } else {
-                    setEmailHelper("")
+                    setEmailHelper("");
                 }
                 break;
             default:
@@ -112,6 +126,11 @@ export default function Contact(props) {
 
     const onConfirm = () => {
         setLoading(true);
+        ReactGA.event({
+            category: "Message",
+            action: "Sent Message"
+        });
+
         axios
             .get(
                 "https://us-central1-shahroozdevelopment.cloudfunctions.net/sendMail",
@@ -130,16 +149,16 @@ export default function Contact(props) {
                 setEmail("");
                 setPhone("");
                 setMessage("");
-                setAlerts({
+                setAlert({
                     open: true,
-                    message: "Message sent successfully!",
+                    message: "Message sent successfully.",
                     backgroundColor: "#4BB543"
                 });
             })
             .catch(err => {
-                setAlerts({
+                setAlert({
                     open: true,
-                    message: "Something went wrong, please try again!",
+                    message: "Something went wrong, please try again.",
                     backgroundColor: "#FF3232"
                 });
             })
@@ -187,7 +206,10 @@ export default function Contact(props) {
             direction={"column"}
             justifyContent={"center"}
             alignItems={"center"}
-            style={{marginBottom: matchesMD ? "5em" : 0, marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0}}
+            style={{
+                marginBottom: matchesMD ? "5em" : 0,
+                marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0
+            }}
             lg={4}
             xl={3}
         >
@@ -212,8 +234,7 @@ export default function Contact(props) {
                     <Grid
                         item
                         container
-                        style={{marginTop: "2em"}}
-                    >
+                        style={{marginTop: "2em"}}>
                         <Grid item>
                             <img
                                 src={"/assets/phone.svg"}
@@ -233,8 +254,7 @@ export default function Contact(props) {
                     <Grid
                         item
                         container
-                        style={{marginBottom: "2em"}}
-                    >
+                        style={{marginBottom: "2em"}}>
                         <Grid item>
                             <img
                                 src={"/assets/email.svg"}
@@ -260,12 +280,10 @@ export default function Contact(props) {
                         item
                         container
                         direction={"column"}
-                        style={{width: "20em"}}
-                    >
+                        style={{width: "20em"}}>
                         <Grid
                             item
-                            style={{marginBottom: "0.5em"}}
-                        >
+                            style={{marginBottom: "0.5em"}}>
                             <TextField
                                 label={"Name"}
                                 id={"name"}
@@ -276,8 +294,7 @@ export default function Contact(props) {
                         </Grid>
                         <Grid
                             item
-                            style={{marginBottom: "0.5em"}}
-                        >
+                            style={{marginBottom: "0.5em"}}>
                             <TextField
                                 label={"Email"}
                                 error={emailHelper.length !== 0}
@@ -290,8 +307,7 @@ export default function Contact(props) {
                         </Grid>
                         <Grid
                             item
-                            style={{marginBottom: "0.5em"}}
-                        >
+                            style={{marginBottom: "0.5em"}}>
                             <TextField
                                 label={"Phone"}
                                 id={"phone"}
@@ -322,7 +338,13 @@ export default function Contact(props) {
                         style={{marginTop: "2em"}}
                     >
                         <Button
-                            disabled={name.length === 0 || message.length === 0 || phone.length === 0 || email.length === 0 || emailHelper.length !== 0}
+                            disabled={
+                                name.length === 0 ||
+                                message.length === 0 ||
+                                phone.length === 0 ||
+                                email.length === 0 ||
+                                emailHelper.length !== 0
+                            }
                             variant={"contained"}
                             className={classes.sendButton}
                             onClick={() => setOpen(true)}
@@ -353,15 +375,13 @@ export default function Contact(props) {
                         <Typography
                             align={"center"}
                             variant={"h4"}
-                            gutterBottom
-                        >
+                            gutterBottom>
                             Confirm Message
                         </Typography>
                     </Grid>
                     <Grid
                         item
-                        style={{marginBottom: "0.5em"}}
-                    >
+                        style={{marginBottom: "0.5em"}}>
                         <TextField
                             label={"Name"}
                             id={"name"}
@@ -372,8 +392,7 @@ export default function Contact(props) {
                     </Grid>
                     <Grid
                         item
-                        style={{marginBottom: "0.5em"}}
-                    >
+                        style={{marginBottom: "0.5em"}}>
                         <TextField
                             label={"Email"}
                             error={emailHelper.length !== 0}
@@ -386,8 +405,7 @@ export default function Contact(props) {
                     </Grid>
                     <Grid
                         item
-                        style={{marginBottom: "0.5em"}}
-                    >
+                        style={{marginBottom: "0.5em"}}>
                         <TextField
                             label={"Phone"}
                             id={"phone"}
@@ -423,11 +441,18 @@ export default function Contact(props) {
                             color={"primary"}
                             onClick={() => setOpen(false)}
                         >
-                            Cancel</Button>
+                            Cancel
+                        </Button>
                     </Grid>
                     <Grid item>
                         <Button
-                            disabled={name.length === 0 || message.length === 0 || phone.length === 0 || email.length === 0 || emailHelper.length !== 0}
+                            disabled={
+                                name.length === 0 ||
+                                message.length === 0 ||
+                                phone.length === 0 ||
+                                email.length === 0 ||
+                                emailHelper.length !== 0
+                            }
                             variant={"contained"}
                             className={classes.sendButton}
                             onClick={onConfirm}
@@ -443,7 +468,7 @@ export default function Contact(props) {
             message={alert.message}
             ContentProps={{style: {backgroundColor: alert.backgroundColor}}}
             anchorOrigin={{vertical: "top", horizontal: "center"}}
-            onClose={() => setAlerts({...alert, open: false})}
+            onClose={() => setAlert({...alert, open: false})}
             autoHideDuration={4000}
         />
         <Grid
@@ -459,16 +484,18 @@ export default function Contact(props) {
             <Grid
                 item
                 style={{
-                    marginLeft: matchesMD ? 0 : "3em", textAlign: matchesMD ? "center" : "inherit"
+                    marginLeft: matchesMD ? 0 : "3em",
+                    textAlign: matchesMD ? "center" : "inherit"
                 }}
             >
                 <Grid container direction={"column"}>
                     <Grid item>
                         <Typography
                             align={matchesMD ? "center" : undefined}
-                            variant={"h1"}
-                        >
-                            Simple Software.<br/>Revolutionary Results.
+                            variant={"h1"}>
+                            Simple Software.
+                            <br/>
+                            Revolutionary Results.
                         </Typography>
                         <Typography
                             align={matchesMD ? "center" : undefined}
@@ -480,8 +507,7 @@ export default function Contact(props) {
                         <Grid
                             container
                             justifyContent={matchesMD ? "center" : undefined}
-                            item
-                        >
+                            item>
                             <Button
                                 component={Link}
                                 href={"/revolution"}
@@ -506,11 +532,17 @@ export default function Contact(props) {
                     href={"/estimate"}
                     variant={"contained"}
                     className={classes.estimateButton}
-                    onClick={() => props.setValue(false)}
+                    onClick={() => {
+                        props.setValue(false);
+                        ReactGA.event({
+                            category: "Estimate",
+                            action: "Contact Page Pressed"
+                        });
+                    }}
                 >
                     Free Estimate
                 </Button>
             </Grid>
         </Grid>
-    </Grid>)
+    </Grid>);
 }

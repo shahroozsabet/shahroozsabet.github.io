@@ -275,6 +275,10 @@ export default function Header(props) {
                 className={classes.button}
                 onClick={() => {
                     props.setValue(false);
+                    ReactGA.event({
+                        category: "Estimate",
+                        action: "Desktop Header Pressed"
+                    });
                 }}
             >
                 Free Estimate
@@ -434,6 +438,10 @@ export default function Header(props) {
                         onClick={() => {
                             setOpenDrawer(false);
                             props.setValue(false);
+                            ReactGA.event({
+                                category: "Estimate",
+                                action: "Mobile Header Pressed"
+                            });
                         }}
                         divider
                         button
