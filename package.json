@@ -29,5 +29,8 @@
     "start": "next start -p $PORT",
     "postbuild": "node scripts/sitemap.js",
     "heroku-postbuild": "npm run build"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
   }
 }
