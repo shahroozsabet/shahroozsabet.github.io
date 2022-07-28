@@ -445,8 +445,9 @@ export default function Revolution(props) {
                 </Typography>
             </Grid>
         </Grid>
-        {sections.map(section => (
+        {sections.map((section, index) => (
             <Grid
+                key={index}
                 item
                 container
                 direction={matchesMD ? "column" : "row"}
@@ -472,8 +473,9 @@ export default function Revolution(props) {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        {section.paragraphs.map(text => (
+                        {section.paragraphs.map((text, index) => (
                             <Typography
+                                key={index}
                                 align={matchesMD ? "center" : undefined}
                                 variant={"body1"}
                                 style={{color: "white", maxWidth: "20em"}}
