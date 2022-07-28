@@ -223,30 +223,25 @@ export default function Header(props) {
         {name: "Contact Us", link: "/contact", activeIndex: 4}
     ];
 
+    const path = typeof window !== "undefined" ? window.location.pathname : null;
+
+    const activeIndex = () => {
+        const found = routes.find(({link}) => link === path);
+        const menuFound = menuOptions.find(({link}) => link === path);
+
+        if (menuFound) {// services menu
+            props.setValue(1);
+            props.setSelectedIndex(menuFound.selectedIndex);
+        } else if (found === undefined) { // estimate page
+            props.setValue(false);
+        } else {// pages
+            props.setValue(found.activeIndex);
+        }
+    };
+
     useEffect(() => {
-        [...menuOptions, ...routes].forEach(route => {
-            switch (window.location.pathname) {
-                case `${route.link}`:
-                    if (props.value !== route.activeIndex) {
-                        props.setValue(route.activeIndex);
-                        if (
-                            route.selectedIndex &&
-                            route.selectedIndex !== props.selectedIndex
-                        ) {
-                            props.setSelectedIndex(route.selectedIndex);
-                        }
-                    }
-                    break;
-                case "/estimate":
-                    if (props.value !== false) {
-                        props.setValue(false);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        });
-    }, [props.value, menuOptions, props.selectedIndex, routes, props]);
+        activeIndex();
+    }, [path]);
 
     const tabs = (
         <React.Fragment>
@@ -476,7 +471,7 @@ export default function Header(props) {
                             onClick={() => props.setValue(0)}
                             className={classes.logoContainer}
                         >
-                            <img alt="Company Logo" className={classes.logo} src={"/assets/logo.svg"}/>
+                            <img className={classes.logo} alt="Company Logo" src={"/assets/logo.svg"}/>
                         </Button>
                         <Hidden mdDown>
                             {tabs}
