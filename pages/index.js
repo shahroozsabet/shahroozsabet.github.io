@@ -9,6 +9,8 @@ import CallToAction from "../src/ui/CallToAction";
 
 import animationData from "../src/animations/landinganimation/data";
 
+import {LazyLoadComponent, LazyLoadImage} from "react-lazy-load-image-component";
+
 const useStyles = makeStyles(theme => ({
     animation: {
         maxWidth: "50em",
@@ -217,11 +219,12 @@ export default function Index(props) {
                 justifyContent={matchesSM ? "center" : undefined}
                 className={classes.serviceContainer}
             >
-                <Grid item
-                      style={{
-                          marginLeft: matchesSM ? 0 : "5em",
-                          textAlign: matchesSM ? "center" : undefined
-                      }}
+                <Grid
+                    item
+                    style={{
+                        marginLeft: matchesSM ? 0 : "5em",
+                        textAlign: matchesSM ? "center" : undefined
+                    }}
                 >
                     <Typography variant={"h4"}>
                         Custom Software Development
@@ -240,7 +243,7 @@ export default function Index(props) {
                         className={classes.learnButton}
                         onClick={() => {
                             props.setValue(1);
-                            props.setSelectedIndex(1)
+                            props.setSelectedIndex(1);
                         }}
                     >
                         <span style={{marginRight: 10}}>Learn More</span>
@@ -252,7 +255,7 @@ export default function Index(props) {
                     </Button>
                 </Grid>
                 <Grid item>
-                    <img
+                    <LazyLoadImage
                         className={classes.icon}
                         alt={"custom software icon"}
                         src={"/assets/customSoftware.svg"}
@@ -269,10 +272,12 @@ export default function Index(props) {
                 justifyContent={matchesSM ? "center" : "flex-end"}
                 className={classes.serviceContainer}
             >
-                <Grid item
-                      style={{
-                          textAlign: matchesSM ? "center" : undefined
-                      }}>
+                <Grid
+                    item
+                    style={{
+                        textAlign: matchesSM ? "center" : undefined
+                    }}
+                >
                     <Typography variant={"h4"}>
                         Mobile App Development
                     </Typography>
@@ -302,7 +307,7 @@ export default function Index(props) {
                     </Button>
                 </Grid>
                 <Grid item style={{marginRight: matchesSM ? 0 : "5em"}}>
-                    <img
+                    <LazyLoadImage
                         className={classes.icon}
                         alt={"Mobile phone icon"}
                         src={"/assets/mobileIcon.svg"}
@@ -319,10 +324,13 @@ export default function Index(props) {
                 justifyContent={matchesSM ? "center" : undefined}
                 className={classes.serviceContainer}
             >
-                <Grid item
-                      style={{
-                          marginLeft: matchesSM ? 0 : "5em", textAlign: matchesSM ? "center" : undefined
-                      }}>
+                <Grid
+                    item
+                    style={{
+                        marginLeft: matchesSM ? 0 : "5em",
+                        textAlign: matchesSM ? "center" : undefined
+                    }}
+                >
                     <Typography variant={"h4"}>
                         Website Development
                     </Typography>
@@ -351,7 +359,7 @@ export default function Index(props) {
                     </Button>
                 </Grid>
                 <Grid item>
-                    <img
+                    <LazyLoadImage
                         className={classes.icon}
                         alt={"website icon"}
                         src={"/assets/websiteIcon.svg"}
@@ -402,7 +410,9 @@ export default function Index(props) {
                         </Grid>
                     </CardContent>
                 </Card>
-                <div className={classes.revolutionBackground}/>
+                <LazyLoadComponent threshold={850}>
+                    <div className={classes.revolutionBackground}/>
+                </LazyLoadComponent>
             </Grid>
         </Grid>
         <Grid item>
@@ -410,7 +420,7 @@ export default function Index(props) {
             <Grid
                 container
                 style={{
-                    height: "80em"
+                    height: "77em"
                 }}
                 alignItems={"center"}
                 direction={"row"}
@@ -427,9 +437,7 @@ export default function Index(props) {
                     <Grid
                         item
                         sm
-                        style={{
-                            marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em"
-                        }}
+                        style={{marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em"}}
                     >
                         <Grid
                             container
@@ -447,18 +455,12 @@ export default function Index(props) {
                                     component={Link}
                                     href={"/about"}
                                     variant={"outlined"}
-                                    style={{
-                                        color: "white", borderColor: "white"
-                                    }}
+                                    style={{color: "white", borderColor: "white"}}
                                     className={classes.learnButton}
                                     onClick={() => props.setValue(3)}
                                 >
                                     <span style={{marginRight: 10}}>Learn More</span>
-                                    <ButtonArrow
-                                        width={10}
-                                        height={10}
-                                        fill="white"
-                                    />
+                                    <ButtonArrow width={10} height={10} fill="white"/>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -486,18 +488,12 @@ export default function Index(props) {
                                     component={Link}
                                     href={"/contact"}
                                     variant={"outlined"}
-                                    style={{
-                                        color: "white", borderColor: "white"
-                                    }}
+                                    style={{color: "white", borderColor: "white"}}
                                     className={classes.learnButton}
                                     onClick={() => props.setValue(4)}
                                 >
                                     <span style={{marginRight: 10}}>Learn More</span>
-                                    <ButtonArrow
-                                        width={10}
-                                        height={10}
-                                        fill="white"
-                                    />
+                                    <ButtonArrow width={10} height={10} fill="white"/>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -506,8 +502,10 @@ export default function Index(props) {
             </Grid>
         </Grid>
         <Grid item>
-            {/*-----Call To Action Block-----*/}
-            <CallToAction setValue={props.setValue}/>
+            <LazyLoadComponent threshold={700}>
+                {/*-----Call To Action Block-----*/}
+                <CallToAction setValue={props.setValue}/>
+            </LazyLoadComponent>
         </Grid>
     </Grid>);
 }
