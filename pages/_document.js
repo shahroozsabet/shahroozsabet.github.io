@@ -1,14 +1,14 @@
-import React from 'react';
-import Document, {Head, Html, Main, NextScript} from 'next/document';
-import {ServerStyleSheets} from '@material-ui/core/styles';
-import Theme from '../src/ui/Theme';
+import React from "react";
+import Document, {Head, Html, Main, NextScript} from "next/document";
+import {ServerStyleSheets} from "@material-ui/core/styles";
+import Theme from "../src/ui/Theme";
 
 export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
                 <Head>
-                    <link href="/favicon.png" rel="shortcut icon"/>
+                    <link rel="shortcut icon" href="/favicon.png"/>
                     {/* PWA primary color */}
                     <meta name="theme-color" content={Theme.palette.primary.main}/>
                     <meta property="og:type" content="website"/>
@@ -17,10 +17,6 @@ export default class MyDocument extends Document {
                     <meta property="og:image:width" content="1200"/>
                     <meta property="og:image:height" content="630"/>
                     <meta property="og:image:alt" content="company logo"/>
-                    <link
-                        href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap"
-                        rel="stylesheet"
-                    />
                 </Head>
                 <body style={{margin: 0}}>
                 <Main/>
@@ -70,6 +66,9 @@ MyDocument.getInitialProps = async (ctx) => {
     return {
         ...initialProps,
         // Styles fragment is rendered after the app and page rendering finish.
-        styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+        styles: [
+            ...React.Children.toArray(initialProps.styles),
+            sheets.getStyleElement()
+        ],
     };
 };
