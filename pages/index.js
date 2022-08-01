@@ -152,12 +152,12 @@ export default function Index(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se"
+                content="https://shahroozsabet.github.io"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se"
+                href="https://shahroozsabet.github.io"
             />
         </Head>
         <Grid item>

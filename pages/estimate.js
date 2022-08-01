@@ -796,12 +796,12 @@ export default function Estimate() {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/estimate"
+                content="https://shahroozsabet.github.io/estimate"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/estimate"
+                href="https://shahroozsabet.github.io/estimate"
             />
         </Head>
         <Grid

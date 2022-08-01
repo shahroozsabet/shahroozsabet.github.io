@@ -48,12 +48,12 @@ export default function Websites(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/websites"
+                content="https://shahroozsabet.github.io/websites"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/websites"
+                href="https://shahroozsabet.github.io/websites"
             />
         </Head>
         <Grid

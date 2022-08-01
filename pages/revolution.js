@@ -218,12 +218,12 @@ export default function Revolution(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/revolution"
+                content="https://shahroozsabet.github.io/revolution"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/revolution"
+                href="https://shahroozsabet.github.io/revolution"
             />
         </Head>
         <Grid

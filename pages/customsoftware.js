@@ -90,12 +90,12 @@ export default function Customsoftware(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/customsoftware"
+                content="https://shahroozsabet.github.io/customsoftware"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/customsoftware"
+                href="https://shahroozsabet.github.io/customsoftware"
             />
         </Head>
         <Grid

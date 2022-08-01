@@ -56,12 +56,12 @@ export default function About(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/about"
+                content="https://shahroozsabet.github.io/about"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/about"
+                href="https://shahroozsabet.github.io/about"
             />
         </Head>
         <Grid

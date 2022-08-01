@@ -25,9 +25,10 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "postbuild": "node scripts/sitemap.js"
+    "postbuild": "node scripts/sitemap.js",
+    "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
   },
   "devDependencies": {
     "file-loader": "^6.2.0"

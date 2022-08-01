@@ -60,12 +60,12 @@ export default function Services(props) {
             <meta
                 property="og:url"
                 key="og:url"
-                content="shahrooz.se/services"
+                content="https://shahroozsabet.github.io/services"
             />
             <link
                 rel="canonical"
                 key="canonical"
-                href="shahrooz.se/services"
+                href="https://shahroozsabet.github.io/services"
             />
         </Head>
         <Grid
