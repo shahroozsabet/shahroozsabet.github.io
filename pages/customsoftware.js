@@ -40,7 +40,7 @@ export default function Customsoftware(props) {
 
     const documentsOptions = {
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animationData: documentsAnimation,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
@@ -49,7 +49,7 @@ export default function Customsoftware(props) {
 
     const scaleOptions = {
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animationData: scaleAnimation,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
@@ -58,7 +58,7 @@ export default function Customsoftware(props) {
 
     const automationOptions = {
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animationData: automationAnimation,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
@@ -67,7 +67,7 @@ export default function Customsoftware(props) {
 
     const uxOptions = {
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animationData: uxAnimation,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
@@ -324,7 +324,6 @@ export default function Customsoftware(props) {
                 <Grid item md>
                     <Lottie
                         options={documentsOptions}
-                        isStopped={true}
                         style={{maxHeight: 275, maxWidth: 275, minHeight: 250}}
                     />
                 </Grid>
@@ -453,7 +452,6 @@ export default function Customsoftware(props) {
                 <Grid item md style={{marginTop: matchesSM ? "2em" : null}}>
                     <Lottie
                         options={automationOptions}
-                        isStopped={true}
                         style={{maxHeight: 290, maxWidth: 280}}
                     />
                 </Grid>
@@ -468,7 +466,6 @@ export default function Customsoftware(props) {
                 <Grid item md style={{marginBottom: matchesSM ? "2em" : null}}>
                     <Lottie
                         options={uxOptions}
-                        isStopped={true}
                         style={{maxHeight: 310, maxWidth: 155}}
                     />
                 </Grid>

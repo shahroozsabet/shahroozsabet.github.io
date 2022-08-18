@@ -129,7 +129,7 @@ export default function Index(props) {
 
     const defaultOptions = {
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animationData: animationData,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
@@ -211,7 +211,7 @@ export default function Index(props) {
                     </Grid>
                 </Grid>
                 <Grid sm item className={classes.animation}>
-                    <Lottie options={defaultOptions} height={"100%"} width={"100%"} isStopped={true}/>
+                    <Lottie options={defaultOptions} height={"100%"} width={"100%"}/>
                 </Grid>
             </Grid>
         </Grid>
