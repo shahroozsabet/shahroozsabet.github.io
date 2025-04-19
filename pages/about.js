@@ -202,7 +202,7 @@ export default function About(props) {
                     Shahrooz Sabet, Founder
                 </Typography>
                 <Typography variant={"body1"} paragraph align={"center"}>
-                    I have more than 9 years Software development experience.
+                    I have more than 15 years Software development experience.
                 </Typography>
             </Grid>
             <Grid item>
@@ -214,13 +214,19 @@ export default function About(props) {
             </Grid>
             <Grid item style={{maxWidth: "45em", padding: "1.25em"}}>
                 <Typography variant={"body1"} align={"center"} paragraph>
-                    Shahrooz is a Software developer with +9 years experience in Banking, Fintech, and IT industries
-                    more as a backend Java developer. He graduated in Master of software technology at Linnaeus
-                    university in Sweden in 2012.
+                    Hi,
+
+                    I'm a software developer with a passion for creating innovative and scalable solutions for the banking, fintech, and IT industries.
+
+                    With over 15 years of experience in backend development, I have mastered Java, Spring Boot, microservices, and cloud native applications. I also have a strong background in REST/gRPC API, SQL, cost accounting, banking solutions, ERP, and software quality.
+
+                    I have a master's degree in software technology from Linnaeus University in Sweden, where I graduated in 2012.
+                    I'm always eager to learn new technologies and tackle complex problems with elegant and efficient solutions.
+
+                    Let's connect and see how we can work together.
                 </Typography>
                 <Typography variant={"body1"} align={"center"} paragraph>
-                    Skills: Java, Spring Boot, Microservices, Cloud native applications, Rest API, Backend
-                    development, Spring Batch, SQL, Cost Accounting, Banking Solutions, ERP, Software Quality.
+                    Top Skills: Spring Boot • Java • Cloud-Native Applications • Back-End Web Development • Microservices
                 </Typography>
             </Grid>
         </Grid>
